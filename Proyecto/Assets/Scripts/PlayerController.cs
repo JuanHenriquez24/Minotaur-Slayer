@@ -5,8 +5,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float walk_speed;
-    [SerializeField] private float sensitivity = 4f;
+    [SerializeField] private float sensitivity;
+    [SerializeField] private float jump_force;
     private bool playing;
+    public bool on_floor;
 
     private void Start()
     {
@@ -39,6 +41,21 @@ public class PlayerController : MonoBehaviour
             {
                 transform.Translate(-walk_speed, 0, 0);
             }
+
+            //jump
+            if(on_floor && Input.GetKey(KeyCode.Space))
+            {
+                transform.Translate(0, jump_force, 0);
+                on_floor = false;
+            }
+        }
+    }
+
+    private void OncollisionEnter(Collision col)
+    {
+        if(col.gameObject.tag == "PISO")
+        {
+            on_floor = true;
         }
     }
 }
