@@ -12,19 +12,31 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private bool playing;
     public bool on_floor;
-    [SerializeField] private float timer_run;
+    private float timer_run;
     [SerializeField] private float run_cool_down;
     [SerializeField] private float run_time;
-    [SerializeField] private float run_cool_down_timer;
+    private float run_cool_down_timer;
+    private bool is_running;
 
-    private void Update()
+    private void Start()
     {
-        timer_run += Time.deltaTime;
-        run_cool_down_timer += Time.deltaTime;
         rb = gameObject.GetComponent<Rigidbody>();
         playing = gameObject.GetComponentInParent<Playing>().playing;
-
-        if(playing)
+        run_cool_down_timer = run_cool_down;
+        speed = walk_speed;
+    }
+    e
+    private void Update()
+    {
+        if (is_running)
+        {
+            timer_run += Time.deltaTime;
+        }
+        else
+        {
+            run_cool_down_timer += Time.deltaTime;
+        }
+        if (playing)
         {
             //rotate on y
             float mouse_X = Input.GetAxis("Mouse X");
@@ -49,21 +61,23 @@ public class PlayerController : MonoBehaviour
             }
 
             //run
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                timer_run = 0;
-            }
-            else if (Input.GetKeyUp(KeyCode.E))
-            {
-                run_cool_down_timer = 0;
-            }
-            if (Input.GetKey(KeyCode.E) && timer_run < run_time && run_cool_down_timer > run_cool_down)
+            if (Input.GetKeyDown(KeyCode.E) && timer_run < run_time && run_cool_down_timer > run_cool_down && !is_running)
             {
                 speed = run_speed;
+                is_running = true;
+                run_cool_down_timer = 0;
             }
-            else
+            else if (Input.GetKeyDown(KeyCode.E) && is_running)
             {
                 speed = walk_speed;
+                is_running = false;
+                timer_run = 0;
+            }
+            else if(timer_run > run_time && is_running)
+            {
+                speed = walk_speed;
+                is_running = false;
+                timer_run = 0;
             }
 
             //jump
