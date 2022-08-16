@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
         run_cool_down_timer = run_cool_down;
         speed = walk_speed;
     }
-    e
+    
     private void Update()
     {
         if (is_running)
