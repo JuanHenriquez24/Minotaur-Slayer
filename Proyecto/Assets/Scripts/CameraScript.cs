@@ -10,10 +10,13 @@ public class CameraScript : MonoBehaviour
     private float y_rot;
     private bool playing;
 
-    public void Update()
+    public void Start()
     {
         playing = gameObject.GetComponentInParent<Playing>().playing;
+    }
 
+    public void Update()
+    {
         if (playing)
         {
             //camera follow

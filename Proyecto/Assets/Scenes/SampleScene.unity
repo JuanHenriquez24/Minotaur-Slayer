@@ -587,10 +587,8 @@ MonoBehaviour:
   sensitivity: 3
   jump_force: 5
   on_floor: 0
-  timer_run: 0
   run_cool_down: 15
   run_time: 10
-  run_cool_down_timer: 0
 --- !u!54 &643924182
 Rigidbody:
   m_ObjectHideFlags: 0

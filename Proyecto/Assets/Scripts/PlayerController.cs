@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO.Ports;
 
 public class PlayerController : MonoBehaviour
 {
@@ -28,14 +29,6 @@ public class PlayerController : MonoBehaviour
     
     private void Update()
     {
-        if (is_running)
-        {
-            timer_run += Time.deltaTime;
-        }
-        else
-        {
-            run_cool_down_timer += Time.deltaTime;
-        }
         if (playing)
         {
             //rotate on y
@@ -61,23 +54,29 @@ public class PlayerController : MonoBehaviour
             }
 
             //run
+            if (is_running)
+            {
+                timer_run += Time.deltaTime;
+                speed = run_speed;
+            }
+            else
+            {
+                run_cool_down_timer += Time.deltaTime;
+                speed = walk_speed;
+            }
             if (Input.GetKeyDown(KeyCode.E) && timer_run < run_time && run_cool_down_timer > run_cool_down && !is_running)
             {
-                speed = run_speed;
                 is_running = true;
-                run_cool_down_timer = 0;
+                timer_run = 0;
             }
             else if (Input.GetKeyDown(KeyCode.E) && is_running)
             {
-                speed = walk_speed;
                 is_running = false;
-                timer_run = 0;
             }
             else if(timer_run > run_time && is_running)
             {
-                speed = walk_speed;
                 is_running = false;
-                timer_run = 0;
+                run_cool_down_timer = 0;
             }
 
             //jump
