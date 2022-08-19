@@ -1,0 +1,13 @@
+
+WASD = caminar
+SPACE = saltar
+E = correr
+P = pausa
+
+viernes (26/8)
+- plano para probar:
+	-cajita para probar largo del salto
+	-cajita para probar alto del salto
+	-dos paredes para probar espacio por el que puedo atravesar
+	-cosas para probar pickup
+	-empezar con combate
