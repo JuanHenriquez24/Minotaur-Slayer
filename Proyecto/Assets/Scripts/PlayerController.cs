@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO.Ports;
 
 public class PlayerController : MonoBehaviour
 {
@@ -21,21 +22,14 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
-        playing = gameObject.GetComponentInParent<Playing>().playing;
         run_cool_down_timer = run_cool_down;
         speed = walk_speed;
     }
-    e
+    
     private void Update()
     {
-        if (is_running)
-        {
-            timer_run += Time.deltaTime;
-        }
-        else
-        {
-            run_cool_down_timer += Time.deltaTime;
-        }
+        playing = gameObject.GetComponentInParent<Playing>().playing;
+
         if (playing)
         {
             //rotate on y
@@ -49,7 +43,7 @@ public class PlayerController : MonoBehaviour
             }
             if (Input.GetKey(KeyCode.S))
             {
-                transform.Translate(0, 0, speed);
+                transform.Translate(0, 0, -speed);
             }
             if (Input.GetKey(KeyCode.D))
             {
@@ -61,30 +55,35 @@ public class PlayerController : MonoBehaviour
             }
 
             //run
-            if (Input.GetKeyDown(KeyCode.E) && timer_run < run_time && run_cool_down_timer > run_cool_down && !is_running)
+            if (is_running)
             {
+                timer_run += Time.deltaTime;
                 speed = run_speed;
-                is_running = true;
-                run_cool_down_timer = 0;
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    is_running = false;
+                }
+                else if (timer_run > run_time)
+                {
+                    is_running = false;
+                    run_cool_down_timer = 0;
+                }
             }
-            else if (Input.GetKeyDown(KeyCode.E) && is_running)
+            else
             {
+                run_cool_down_timer += Time.deltaTime;
                 speed = walk_speed;
-                is_running = false;
-                timer_run = 0;
-            }
-            else if(timer_run > run_time && is_running)
-            {
-                speed = walk_speed;
-                is_running = false;
-                timer_run = 0;
+                if (Input.GetKeyDown(KeyCode.E) && run_cool_down_timer > run_cool_down)
+                {
+                    is_running = true;
+                    timer_run = 0;
+                }
             }
 
             //jump
             if(on_floor && Input.GetKey(KeyCode.Space))
             {
-                rb.AddForce(Vector3.up * jump_force, ForceMode.Impulse);
-                on_floor = false;
+                PlayerJump();
             }
         }
     }
@@ -95,5 +94,12 @@ public class PlayerController : MonoBehaviour
         {
             on_floor = true;
         }
+    }
+
+    private void PlayerJump()
+    {
+        rb.AddForce(Vector3.up * jump_force, ForceMode.Impulse);
+        on_floor = false;
+
     }
 }

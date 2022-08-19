@@ -9,7 +9,7 @@ public class CameraScript : MonoBehaviour
     private float x_rot;
     private float y_rot;
     private bool playing;
-
+    
     public void Update()
     {
         playing = gameObject.GetComponentInParent<Playing>().playing;
