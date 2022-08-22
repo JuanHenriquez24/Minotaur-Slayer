@@ -23,7 +23,6 @@ public class SerialConnection : MonoBehaviour
             try
             {
                 string lecturaValor = serialPort.ReadLine();
-                Debug.Log(lecturaValor);
                 string[] valor = lecturaValor.Split(',');
             }
             catch
