@@ -19,14 +19,14 @@ public class PlayerController : MonoBehaviour
     private float run_cool_down_timer;
     private bool is_running;
 
-    private void Start()
+    void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
         run_cool_down_timer = run_cool_down;
         speed = walk_speed;
     }
-    
-    private void Update()
+
+    void Update()
     {
         playing = gameObject.GetComponentInParent<Playing>().playing;
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Playing : MonoBehaviour
 {
     public bool playing;
-    private bool pausa;
+    public bool pausa;
 
     void Start()
     {
@@ -18,10 +18,12 @@ public class Playing : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P) && !pausa)
         {
             ponerPausa();
+            Cursor.visible = true;
         }
         else if(Input.GetKeyDown(KeyCode.P) && pausa)
         {
             sacarPausa();
+            Cursor.visible = false;
         }
     }
 
