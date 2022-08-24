@@ -18,12 +18,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float run_time;
     private float run_cool_down_timer;
     private bool is_running;
+    public float HPmax;
+    public float HPActual;
+    public float mouse_X;
+    public float y_rot;
 
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
         run_cool_down_timer = run_cool_down;
         speed = walk_speed;
+        HPActual = HPmax;
     }
 
     void Update()
@@ -33,8 +38,9 @@ public class PlayerController : MonoBehaviour
         if (playing)
         {
             //rotate on y
-            float mouse_X = Input.GetAxis("Mouse X");
-            transform.Rotate(0, mouse_X * sensitivity, 0);
+            mouse_X = Input.GetAxis("Mouse X");
+            y_rot += mouse_X * sensitivity;
+            transform.rotation = Quaternion.Euler(0, y_rot, 0);
 
             //walk
             if (Input.GetKey(KeyCode.W))
@@ -81,7 +87,7 @@ public class PlayerController : MonoBehaviour
             }
 
             //jump
-            if(on_floor && Input.GetKey(KeyCode.Space))
+            if (on_floor && Input.GetKey(KeyCode.Space))
             {
                 PlayerJump();
             }
@@ -90,9 +96,17 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        if(col.tag == "PISO")
+        if (col.tag == "PISO")
         {
             on_floor = true;
+        }
+    }
+    
+    private void OnCollisionEnter(Collision col)
+    {
+        if(col.collider.tag == "PAIN")
+        {
+            HPActual -= 50;
         }
     }
 
