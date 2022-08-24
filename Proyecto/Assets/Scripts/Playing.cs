@@ -1,16 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Playing : MonoBehaviour
 {
     public bool playing;
     public bool pausa;
+    private GameObject screen_pausa;
 
     void Start()
     {
+        screen_pausa = GameObject.Find("PAUSA_SCREEN");
         Cursor.visible = false;
         playing = true;
+        screen_pausa.SetActive(false);
     }
 
     void Update()
@@ -18,24 +22,26 @@ public class Playing : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P) && !pausa)
         {
             ponerPausa();
-            Cursor.visible = true;
         }
         else if(Input.GetKeyDown(KeyCode.P) && pausa)
         {
             sacarPausa();
-            Cursor.visible = false;
         }
     }
 
-    private void ponerPausa()
+    public void ponerPausa()
     {
         playing = false;
         pausa = true;
+        screen_pausa.SetActive(true);
+        Cursor.visible = true;
     }
 
-    private void sacarPausa()
+    public void sacarPausa()
     {
         playing = true;
         pausa = false;
+        screen_pausa.SetActive(false);
+        Cursor.visible = false;
     }
 }

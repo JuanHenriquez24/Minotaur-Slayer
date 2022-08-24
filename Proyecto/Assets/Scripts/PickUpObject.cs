@@ -21,6 +21,7 @@ public class PickUpObject : MonoBehaviour
     {
         playing = gameObject.GetComponentInParent<Playing>().playing;
         pausa = gameObject.GetComponentInParent<Playing>().pausa;
+        texto.transform.rotation = Camera.main.transform.rotation;
 
         if (playing)
         {
