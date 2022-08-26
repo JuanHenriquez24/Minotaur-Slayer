@@ -12,7 +12,7 @@
 #define bot4 7
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(19200);
   
   pinMode(joySW1, INPUT_PULLUP);
   pinMode(joySW2, INPUT_PULLUP);
