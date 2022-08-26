@@ -12,7 +12,7 @@
 #define bot4 7
 
 void setup() {
-  Serial.begin(19200);
+  Serial.begin(9600);
   
   pinMode(joySW1, INPUT_PULLUP);
   pinMode(joySW2, INPUT_PULLUP);
@@ -23,7 +23,7 @@ void setup() {
 }
  
 void loop() {
-  // Lectura de valores de el control. Ej: el eje X de el joystick 1
+  // put your main code here, to run repeatedly:
   int x1Value = analogRead(joyX1);
   int y1Value = analogRead(joyY1);
   int sw1Value = !digitalRead(joySW1); 
@@ -34,13 +34,11 @@ void loop() {
   int bot2Value = !digitalRead(bot2);
   int bot3Value = !digitalRead(bot3);
   int bot4Value = !digitalRead(bot4);
-  //Mapeo de los valores de 0 a 1024 a -45 a 45
-  int x1Map = map(x1Value, 0, 1024, -45, 45);
-  int y1Map = map(y1Value, 0, 1024, 45, -45);
-  int x2Map = map(x2Value, 0, 1024, -45, 45);
-  int y2Map = map(y2Value, 0, 1024, 45, -45); 
-
- //Envio de los datos a unity a traves de la comunicacion serial
+  int x1Map = map(x1Value, 0, 1024, -46, 45);
+  int y1Map = map(y1Value, 0, 1024, 45, -46);
+  int x2Map = map(x2Value, 0, 1024, -46, 45);
+  int y2Map = map(y2Value, 0, 1024, 45, -46); 
+ 
   Serial.flush(); 
   Serial.print(x1Map);
   Serial.print(",");
