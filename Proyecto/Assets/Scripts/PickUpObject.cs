@@ -8,7 +8,6 @@ public class PickUpObject : MonoBehaviour
     private GameObject texto;
     private bool en_rango_obj;
     private bool playing;
-    private bool pausa;
 
     void Start()
     {
@@ -20,27 +19,23 @@ public class PickUpObject : MonoBehaviour
     void Update()
     {
         playing = gameObject.GetComponentInParent<Playing>().playing;
-        pausa = gameObject.GetComponentInParent<Playing>().pausa;
         texto.transform.rotation = Camera.main.transform.rotation;
 
         if (playing)
         {
-            if (Input.GetKey(KeyCode.M) && en_rango_obj)
+            if (en_rango_obj)
             {
-                texto.gameObject.SetActive(false);
-                gameObject.SetActive(false);
+                texto.gameObject.SetActive(true);
+                if (Input.GetKey(KeyCode.M))
+                {
+                    texto.gameObject.SetActive(false);
+                    gameObject.SetActive(false);
+                }
             }
         }
         else
         {
-            if (pausa)
-            {
-                texto.gameObject.SetActive(false);
-            }
-            else if (en_rango_obj)
-            {
-                texto.gameObject.SetActive(true);
-            }
+            texto.gameObject.SetActive(false);
         }
     }
 
@@ -48,7 +43,6 @@ public class PickUpObject : MonoBehaviour
     {
         if(col.tag == "PLAYER")
         {
-            texto.gameObject.SetActive(true);
             en_rango_obj = true;
         }
     }
@@ -57,8 +51,8 @@ public class PickUpObject : MonoBehaviour
     {
         if (col.tag == "PLAYER")
         {
-            texto.gameObject.SetActive(false);
             en_rango_obj = false;
+            texto.gameObject.SetActive(false);
         }
     }
 }
