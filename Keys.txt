@@ -3,6 +3,7 @@ WASD = caminar
 SPACE = saltar
 E = correr
 P = pausa
+M = atacar/levantar objeto
 
 viernes (26/8)
 - plano para probar:
@@ -12,3 +13,12 @@ viernes (26/8)
 	-cosas para probar pickup -
 -empezar con combate
 -hacer pickup - 
+
+xJoystick1, yJoystick1, btnJoystick1, xJoystick2, yJoystick2, btnJoystick2, btn1, btn2, btn3, btn4
+
+Joystick1 -> movimiento y pausa
+Joystick2 -> camara y correr
+Btn1 -> atacar y levantar objeto
+Btn2 -> saltar
+Btn3 -> hilo
+Btn4 -> inventario?

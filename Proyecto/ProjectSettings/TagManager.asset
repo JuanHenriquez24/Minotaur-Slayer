@@ -8,6 +8,7 @@ TagManager:
   - PAIN
   - PICKUP
   - PLAYER
+  - CONTROL
   layers:
   - Default
   - TransparentFX

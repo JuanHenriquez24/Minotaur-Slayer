@@ -6,7 +6,8 @@ using System.IO.Ports;
 public class SerialConnection : MonoBehaviour
 {
     
-    SerialPort serialPort = new SerialPort("COM6", 19200);
+    SerialPort serialPort = new SerialPort("COM4", 19200);
+    public string[] valor;
 
     void Start()
     {
@@ -23,8 +24,7 @@ public class SerialConnection : MonoBehaviour
             try
             {
                 string lecturaValor = serialPort.ReadLine();
-                Debug.Log(lecturaValor);
-                string[] valor = lecturaValor.Split(',');
+                valor = lecturaValor.Split(',');
             }
             catch
             {
