@@ -23,8 +23,7 @@ public class PlayerController : MonoBehaviour
     public float mouse_X;
     public float y_rot;
     private bool jumping;
-    public string[] array_control;
-    public bool control;
+    private float damage_cool_down;
 
     void Start()
     {
@@ -32,56 +31,39 @@ public class PlayerController : MonoBehaviour
         run_cool_down_timer = run_cool_down;
         speed = walk_speed;
         HPActual = HPmax;
+        damage_cool_down = 5;
     }
 
     void Update()
     {
         playing = gameObject.GetComponentInParent<Playing>().playing;
 
-        if (control)
-        {
-            array_control = GameObject.FindGameObjectWithTag("CONTROL").GetComponent<SerialConnection>().valor;
-        }
-
         if (playing)
         {
             //rotate on y
-            if (control)
-            {
-                y_rot = float.Parse(array_control[3]);
-            }
-            else
-            {
-                mouse_X = Input.GetAxis("Mouse X");
-                y_rot += mouse_X * sensitivity;
-            }
+            mouse_X = Input.GetAxis("Mouse X");
+            y_rot += mouse_X * sensitivity;
+
             transform.rotation = Quaternion.Euler(0, y_rot, 0);
 
             //walk
-            if (control)
+            if (Input.GetKey(KeyCode.W))
             {
-                transform.Translate(float.Parse(array_control[0]), 0, float.Parse(array_control[1]));
+                transform.Translate(0, 0, speed);
             }
-            else
+            if (Input.GetKey(KeyCode.S))
             {
-                if (Input.GetKey(KeyCode.W))
-                {
-                    transform.Translate(0, 0, speed);
-                }
-                if (Input.GetKey(KeyCode.S))
-                {
-                    transform.Translate(0, 0, -speed);
-                }
-                if (Input.GetKey(KeyCode.D))
-                {
-                    transform.Translate(speed, 0, 0);
-                }
-                if (Input.GetKey(KeyCode.A))
-                {
-                    transform.Translate(-speed, 0, 0);
-                }
+                transform.Translate(0, 0, -speed);
             }
-
+            if (Input.GetKey(KeyCode.D))
+            {
+                transform.Translate(speed, 0, 0);
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                transform.Translate(-speed, 0, 0);
+            }
+        
             //run
             if (is_running)
             {
@@ -113,6 +95,9 @@ public class PlayerController : MonoBehaviour
             {
                 PlayerJump();
             }
+
+            //damage cool down
+            damage_cool_down += Time.deltaTime;
         }
     }
 
@@ -133,11 +118,12 @@ public class PlayerController : MonoBehaviour
         }
     }
     
-    private void OnCollisionEnter(Collision col)
+    private void OnCollisionStay(Collision col)
     {
-        if(col.collider.tag == "PAIN")
+        if(col.collider.tag == "PAIN" && damage_cool_down > 0.5)
         {
-            HPActual -= 50;
+            HPActual -= 10;
+            damage_cool_down = 0;
         }
     }
 
