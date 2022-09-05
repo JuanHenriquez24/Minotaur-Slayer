@@ -5,14 +5,9 @@ E = correr
 P = pausa
 M = atacar/levantar objeto
 
-viernes (26/8)
-- plano para probar:
-	-cajita para probar largo del salto
-	-cajita para probar alto del salto
-	-dos paredes para probar espacio por el que puedo atravesar
-	-cosas para probar pickup -
 -empezar con combate
--hacer pickup - 
+-loading
+-
 
 xJoystick1, yJoystick1, btnJoystick1, xJoystick2, yJoystick2, btnJoystick2, btn1, btn2, btn3, btn4
 
