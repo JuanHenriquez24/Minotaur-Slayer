@@ -7,10 +7,11 @@ public class PickUpObject : MonoBehaviour
 {
     private bool en_rango_obj;
     private bool playing;
-
+    bool pickeado; 
     void Start()
     {
         en_rango_obj = false;
+        pickeado = false;
     }
 
     void Update()
@@ -24,6 +25,7 @@ public class PickUpObject : MonoBehaviour
                 if (Input.GetKey(KeyCode.M))
                 {
                     gameObject.SetActive(false);
+                    pickeado = true;
                 }
             }
         }
