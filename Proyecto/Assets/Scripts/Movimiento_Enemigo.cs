@@ -8,7 +8,7 @@ public class Movimiento_Enemigo : MonoBehaviour
     private Transform player;
     private bool playing;
     private Transform parent;
-    public Vector3 test;
+    private Vector3 look_position;
 
     void Start()
     {
@@ -29,7 +29,8 @@ public class Movimiento_Enemigo : MonoBehaviour
 
         if (playing)
         {
-            transform.LookAt(player.transform);
+            look_position = new Vector3(player.position.x, transform.position.y, player.position.z);
+            transform.LookAt(look_position);
             transform.position += transform.forward * speed * Time.deltaTime;
         }
     }

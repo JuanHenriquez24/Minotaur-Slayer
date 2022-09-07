@@ -56,7 +56,6 @@
      <Compile Include="Assets\Scripts\CameraScript.cs" />
      <Compile Include="Assets\Scripts\ControlArduino\SerialConnection.cs" />
      <Compile Include="Assets\Scripts\HPController.cs" />
-     <Compile Include="Assets\Scripts\Inventory.cs" />
      <Compile Include="Assets\Scripts\Movimiento_Enemigo.cs" />
      <Compile Include="Assets\Scripts\PickUpObject.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
