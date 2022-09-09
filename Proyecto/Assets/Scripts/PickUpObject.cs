@@ -8,6 +8,7 @@ public class PickUpObject : MonoBehaviour
     private bool en_rango_obj;
     private bool playing;
     bool pickeado; 
+
     void Start()
     {
         en_rango_obj = false;
