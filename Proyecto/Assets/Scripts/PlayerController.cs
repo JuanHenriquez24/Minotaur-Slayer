@@ -49,21 +49,21 @@ public class PlayerController : MonoBehaviour
             //walk
             if (Input.GetKey(KeyCode.W))
             {
-                transform.Translate(0, 0, speed);
+                transform.position += transform.forward * speed * Time.deltaTime;
             }
             if (Input.GetKey(KeyCode.S))
             {
-                transform.Translate(0, 0, -speed);
+                transform.position -= transform.forward * speed * Time.deltaTime;
             }
             if (Input.GetKey(KeyCode.D))
             {
-                transform.Translate(speed, 0, 0);
+                transform.position += transform.right * speed * Time.deltaTime;
             }
             if (Input.GetKey(KeyCode.A))
             {
-                transform.Translate(-speed, 0, 0);
+                transform.position -= transform.right * speed * Time.deltaTime;
             }
-        
+
             //run
             if (is_running)
             {
