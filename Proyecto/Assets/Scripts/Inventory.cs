@@ -7,30 +7,39 @@ public class Inventory : MonoBehaviour
 {
     public bool pickeado;
     public GameObject PICKUP_OBJECT;
+    public GameObject Llave1UI;
     public GameObject Llave1;
+    private bool pickeado1;
     public GameObject Llave2;
     public GameObject Llave3;
 
     // Start is called before the first frame update
     void Start()
     {
-        pickeado = false;
+        Llave1UI.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-    if (PICKUP_OBJECT == true)
+        pickeado1 = Llave1.GetComponent<PickUpObject>().pickeado;
+        if (pickeado == true)
         {
-            pickeado = false;
+            Llave1UI.SetActive(true);
+        }
+        else
+        {
+            Llave1UI.SetActive(false);
+        }
+    /*if (PICKUP_OBJECT == true)
+        {
             Llave1.SetActive(false);
         }
         if (PICKUP_OBJECT == false)
         {
-            pickeado = true;
             Llave1.SetActive(true);
         }
-     /*
+
         if (tienellave == true)
         {
             llave1.setactive(true);
@@ -41,4 +50,5 @@ public class Inventory : MonoBehaviour
         }
         */
     }
+
 }
