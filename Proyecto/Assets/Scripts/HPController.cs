@@ -13,12 +13,6 @@ public class HPController : MonoBehaviour
     void Update()
     {
         PC = FindObjectOfType<PlayerController>();
-        HPBar.fillAmount = PC.HPActual / PC.HPmax; 
-        //if (muerte == true)
-        {
-            // para gameobjects
-            //BarraDeVida.SetActive(false);
-            // para textos BarraDeVida.enabled = false;
-        }
+        HPBar.fillAmount = PC.HPActual / PC.HPmax;
     }
 }

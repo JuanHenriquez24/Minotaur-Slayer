@@ -9,6 +9,8 @@ TagManager:
   - PICKUP
   - PLAYER
   - CONTROL
+  - PLAYER_PICK
+  - LLAVE
   layers:
   - Default
   - TransparentFX

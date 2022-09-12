@@ -5,50 +5,33 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    public bool pickeado;
-    public GameObject PICKUP_OBJECT;
-    public GameObject Llave1UI;
-    public GameObject Llave1;
-    private bool pickeado1;
-    public GameObject Llave2;
-    public GameObject Llave3;
+    private bool en_rango;
+    private Collider current_col;
+    private bool playing;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        Llave1UI.SetActive(false);
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        pickeado1 = Llave1.GetComponent<PickUpObject>().pickeado;
-        if (pickeado == true)
+        playing = gameObject.GetComponentInParent<Playing>().playing;
+        if (Input.GetKeyDown(KeyCode.M) && en_rango && playing)
         {
-            Llave1UI.SetActive(true);
+            current_col.GetComponent<PickUpLlave>().pickedUp();
         }
-        else
-        {
-            Llave1UI.SetActive(false);
-        }
-    /*if (PICKUP_OBJECT == true)
-        {
-            Llave1.SetActive(false);
-        }
-        if (PICKUP_OBJECT == false)
-        {
-            Llave1.SetActive(true);
-        }
+    }
 
-        if (tienellave == true)
+    private void OnTriggerEnter (Collider col)
+    {
+        if (col.tag == "LLAVE")
         {
-            llave1.setactive(true);
+            col.GetComponent<PickUpLlave>().en_rango_obj = true;
+            en_rango = true;
+            current_col = col;
+            
         }
-        if (tienellave == false)
-        {
-            llave1.setactive(false);
-        }
-        */
+    }
+    private void OnTriggerExit(Collider col)
+    {
+        col.GetComponent<PickUpLlave>().en_rango_obj = false;
+        en_rango = false;
     }
 
 }
