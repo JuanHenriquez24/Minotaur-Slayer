@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Inventory : MonoBehaviour
+public class KeyInventory : MonoBehaviour
 {
     private bool en_rango;
     private Collider current_col;

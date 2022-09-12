@@ -6,11 +6,11 @@ TagManager:
   tags:
   - PISO
   - PAIN
-  - PICKUP
   - PLAYER
   - CONTROL
   - PLAYER_PICK
   - LLAVE
+  - ARMAS
   layers:
   - Default
   - TransparentFX
