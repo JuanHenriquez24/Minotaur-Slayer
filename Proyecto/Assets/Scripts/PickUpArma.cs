@@ -4,6 +4,4 @@ using UnityEngine;
 
 public class PickUpArma : MonoBehaviour
 {
-    [SerializeField] private GameObject arma;
-
 }

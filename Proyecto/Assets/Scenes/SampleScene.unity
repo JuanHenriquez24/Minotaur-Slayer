@@ -3669,9 +3669,6 @@ Transform:
   m_Children:
   - {fileID: 367492488}
   - {fileID: 1695322905}
-  - {fileID: 2047545316}
-  - {fileID: 763447370}
-  - {fileID: 916215130}
   m_Father: {fileID: 16234556}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3753,14 +3750,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae769185b3c6a6428099bbbb0455ade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon_slots:
-  - {fileID: 56935641}
-  - {fileID: 611530538}
-  - {fileID: 192296095}
-  weapons:
-  - {fileID: 2047545315}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!96 &643924185
 TrailRenderer:
   serializedVersion: 2
@@ -4562,36 +4551,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.20017213, y: 13.645627, z: 2.200888}
   m_Center: {x: -0.0000044666226, y: 0, z: -0.11901669}
---- !u!1 &763447369
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 763447370}
-  m_Layer: 0
-  m_Name: LANZA
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &763447370
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 763447369}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 643924179}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &770045115
 GameObject:
   m_ObjectHideFlags: 0
@@ -5394,36 +5353,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.20001604, y: 13.645627, z: 6}
   m_Center: {x: 0.0000026524067, y: 0, z: 0.44686973}
---- !u!1 &916215129
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 916215130}
-  m_Layer: 0
-  m_Name: ARMA3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &916215130
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 916215129}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 643924179}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &921258856 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100674, guid: a73bf4bd9dc8ae149978d5528cbd6906,
@@ -5997,9 +5926,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e0e61fe5feffef4da42819215a201d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color:
-    serializedVersion: 2
-    rgba: 0
 --- !u!23 &1056453060
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10554,36 +10480,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.20017216, y: 13.645627, z: 4.2}
   m_Center: {x: -0.0000006519258, y: 1.801867e-28, z: -0.22712964}
---- !u!1 &2047545315
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2047545316}
-  m_Layer: 0
-  m_Name: ESPADA
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &2047545316
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2047545315}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 643924179}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2057176911 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100194, guid: a73bf4bd9dc8ae149978d5528cbd6906,
