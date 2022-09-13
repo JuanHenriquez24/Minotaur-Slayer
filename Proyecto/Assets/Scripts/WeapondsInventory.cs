@@ -5,4 +5,6 @@ using UnityEngine.UI;
 
 public class WeapondsInventory : MonoBehaviour
 {
+    [SerializeField] private GameObject[] array_UI_armas = new GameObject[3];
+    
 }
