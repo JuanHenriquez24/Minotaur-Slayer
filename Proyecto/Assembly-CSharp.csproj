@@ -56,6 +56,7 @@
      <Compile Include="Assets\Scripts\AtaqueJugador.cs" />
      <Compile Include="Assets\Scripts\CameraScript.cs" />
      <Compile Include="Assets\Scripts\ControlArduino\SerialConnection.cs" />
+     <Compile Include="Assets\Scripts\DanioEnemigo.cs" />
      <Compile Include="Assets\Scripts\HPController.cs" />
      <Compile Include="Assets\Scripts\KeyInventory.cs" />
      <Compile Include="Assets\Scripts\Movimiento_Enemigo.cs" />
