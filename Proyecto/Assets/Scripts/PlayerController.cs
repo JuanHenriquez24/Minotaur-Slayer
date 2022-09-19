@@ -111,20 +111,25 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit(Collider col)
     {
-        if(col.tag == "PISO")
+        if (col.tag == "PISO")
         {
             on_floor = false;
             jumping = false;
         }
     }
-    
+
     private void OnCollisionStay(Collision col)
     {
-        if(col.collider.tag == "PAIN" && damage_cool_down > 0.5)
+        if (col.collider.tag == "PAIN" && damage_cool_down > 0.5)
         {
-            HPActual -= 10;
-            damage_cool_down = 0;
+            recibirDanio(col.collider.GetComponent<DanioEnemigo>().danio);
         }
+    }
+
+    public void recibirDanio(int danio)
+    {
+        HPActual -= danio;
+        damage_cool_down = 0;
     }
 
     private void PlayerJump()
