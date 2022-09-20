@@ -6,7 +6,7 @@ using System.IO.Ports;
 public class SerialConnection : MonoBehaviour
 {
     
-    SerialPort serialPort = new SerialPort("COM4", 19200);
+    SerialPort serialPort = new SerialPort("COM4", 115000);
     public string[] valor;
 
     void Start()

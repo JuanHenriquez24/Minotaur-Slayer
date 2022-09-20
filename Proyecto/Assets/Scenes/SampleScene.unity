@@ -3709,6 +3709,7 @@ MonoBehaviour:
   HPActual: 0
   mouse_X: 0
   y_rot: 0
+  damageCoolDownTime: 0
 --- !u!54 &643924182
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6347,7 +6348,6 @@ GameObject:
   - component: {fileID: 1159986313}
   - component: {fileID: 1159986317}
   - component: {fileID: 1159986318}
-  - component: {fileID: 1159986319}
   m_Layer: 0
   m_Name: ENEMY
   m_TagString: PAIN
@@ -6466,25 +6466,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1159986311}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0e69bddc824ca34b845e4327f9d3bdd, type: 3}
+  m_Script: {fileID: 11500000, guid: becd95513e5e57b49b062a4c2c20718e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vidaMax: 50
-  vidaActual: 0
-  danio: 10
---- !u!65 &1159986319
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1159986311}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 1.322437}
-  m_Center: {x: 0, y: 0, z: 1.0210339}
+  hpMax: 50
+  hpActual: 0
+  danio: 3
+  damageCoolDownTime: 2
 --- !u!1 &1162517984 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100012, guid: a73bf4bd9dc8ae149978d5528cbd6906,
@@ -6821,7 +6809,7 @@ GameObject:
   - component: {fileID: 1260718836}
   m_Layer: 0
   m_Name: COLLIDER_ATAQUE
-  m_TagString: ARMAS
+  m_TagString: ATTACK
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6852,8 +6840,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebe0cd8e9d85a6a4a981842943e3dcd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player_collider: {fileID: 1260718837}
-  coolDownTime: 0
+  coolDownTime: 6
+  attackTime: 6
   danio: 25
 --- !u!65 &1260718837
 BoxCollider:

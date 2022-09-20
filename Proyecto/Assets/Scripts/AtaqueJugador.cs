@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class AtaqueJugador : MonoBehaviour
 {
-    private bool playing;
-    [SerializeField] private Collider player_collider;
-    private float attack_cool_down_timer;
+    private Collider playerCollider;
     [SerializeField] private float coolDownTime;
-    public int danio;
+    private float timer_Cool_Down;
+    [SerializeField] private float attackTime;
+    private float timer_Attack;
+    public float danio;
+    private bool playing;
 
     void Start()
     {
-        player_collider = gameObject.GetComponent<BoxCollider>();
-        attack_cool_down_timer = coolDownTime;
-        player_collider.enabled = false;
-
+        timer_Cool_Down = coolDownTime;
+        playerCollider = GetComponent<Collider>();
+        playerCollider.enabled = false;
     }
 
     void Update()
@@ -23,16 +24,17 @@ public class AtaqueJugador : MonoBehaviour
         playing = gameObject.GetComponentInParent<Playing>().playing;
         if (playing)
         {
-            attack_cool_down_timer += Time.deltaTime;
+            timer_Cool_Down += Time.deltaTime;
 
-            if (Input.GetKeyDown(KeyCode.M) && attack_cool_down_timer > coolDownTime)
+            if (Input.GetKeyDown(KeyCode.M) && timer_Cool_Down > coolDownTime)
             {
-
-                player_collider.enabled = true;
-                attack_cool_down_timer = 0;
-
+                playerCollider.enabled = true;
+                timer_Cool_Down = 0;
+            }
+            if (timer_Cool_Down > attackTime)
+            {
+                playerCollider.enabled = false;
             }
         }
     }
 }
-    
