@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     public float y_rot;
     private bool jumping;
     private float damage_cool_down;
+    [SerializeField] private float damageCoolDownTime;
 
     void Start()
     {
@@ -31,7 +32,7 @@ public class PlayerController : MonoBehaviour
         run_cool_down_timer = run_cool_down;
         speed = walk_speed;
         HPActual = HPmax;
-        damage_cool_down = 5;
+        damage_cool_down = damageCoolDownTime;
     }
 
     void Update()
@@ -117,21 +118,7 @@ public class PlayerController : MonoBehaviour
             jumping = false;
         }
     }
-
-    private void OnCollisionStay(Collision col)
-    {
-        if (col.collider.tag == "PAIN" && damage_cool_down > 0.5)
-        {
-            recibirDanio(col.collider.GetComponent<DanioEnemigo>().danio);
-        }
-    }
-
-    public void recibirDanio(int danio)
-    {
-        HPActual -= danio;
-        damage_cool_down = 0;
-    }
-
+    
     private void PlayerJump()
     {
         rb.AddForce(Vector3.up * jump_force, ForceMode.Impulse);
