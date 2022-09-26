@@ -7,7 +7,7 @@ public class AtaqueEnemigo : MonoBehaviour
     [SerializeField] private float hpMax;
     public float hpActual;
     public float danio;
-    private float timer_DamageCoolDown;
+    public float timer_DamageCoolDown;
     [SerializeField] private float damageCoolDownTime;
     private bool playing;
 
@@ -26,8 +26,7 @@ public class AtaqueEnemigo : MonoBehaviour
             timer_DamageCoolDown += Time.deltaTime;
             if (hpActual <= 0)
             {
-                //Destroy(gameObject);
-                Debug.Log("RIP");
+                Destroy(gameObject);
             }
         }
     }
@@ -38,7 +37,7 @@ public class AtaqueEnemigo : MonoBehaviour
         {
             float danioJugador = col.GetComponent<AtaqueJugador>().danio;
             hpActual -= danioJugador;
-            damageCoolDownTime = 0;
+            timer_DamageCoolDown = 0;
         }
     }
 }
