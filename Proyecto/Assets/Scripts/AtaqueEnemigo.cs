@@ -10,9 +10,11 @@ public class AtaqueEnemigo : MonoBehaviour
     public float timer_DamageCoolDown;
     [SerializeField] private float damageCoolDownTime;
     private bool playing;
+    private Rigidbody rb;
 
     void Start()
     {
+        rb = gameObject.GetComponent<Rigidbody>();
         hpActual = hpMax;
         timer_DamageCoolDown = damageCoolDownTime;
     }
@@ -35,6 +37,7 @@ public class AtaqueEnemigo : MonoBehaviour
     {
         if(col.tag == "ATTACK" && timer_DamageCoolDown > damageCoolDownTime)
         {
+            rb.AddForce(new Vector3(0f, 0f, -2f));
             float danioJugador = col.GetComponent<AtaqueJugador>().danio;
             hpActual -= danioJugador;
             timer_DamageCoolDown = 0;
