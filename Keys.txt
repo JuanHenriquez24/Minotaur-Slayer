@@ -16,4 +16,4 @@ Joystick2 -> camara y correr
 Btn1 -> atacar y levantar objeto
 Btn2 -> saltar
 Btn3 -> hilo
-Btn4 -> inventario?
+Btn4 -> inventario
