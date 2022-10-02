@@ -5,18 +5,35 @@ using UnityEngine;
 public class AtaqueEnemigo : MonoBehaviour
 {
     [SerializeField] private float hpMax;
-    public float hpActual;
-    public float danio;
-    public float timer_DamageCoolDown;
+    private float hpActual;
+    [SerializeField] private float danio;
+    private float timer_DamageCoolDown;
     [SerializeField] private float damageCoolDownTime;
     private bool playing;
     private Rigidbody rb;
+    private float timer_attackCoolDown;
+    [SerializeField] private float attackCoolDown;
+    [SerializeField] private float attackTime;
+    private Transform player;
+    private Transform parent;
+
 
     void Start()
     {
+        parent = gameObject.transform.parent;
+        for (int i = 0; i < parent.childCount; i++)
+        {
+            if (parent.GetChild(i).tag == "PLAYER")
+            {
+                player = parent.GetChild(i);
+                break;
+            }
+        }
         rb = gameObject.GetComponent<Rigidbody>();
         hpActual = hpMax;
         timer_DamageCoolDown = damageCoolDownTime;
+        attackCoolDown += attackTime;
+        timer_attackCoolDown = attackCoolDown;
     }
 
     void Update()
@@ -26,6 +43,8 @@ public class AtaqueEnemigo : MonoBehaviour
         if (playing)
         {
             timer_DamageCoolDown += Time.deltaTime;
+            timer_attackCoolDown += Time.deltaTime;
+
             if (hpActual <= 0)
             {
                 Destroy(gameObject);
@@ -35,9 +54,13 @@ public class AtaqueEnemigo : MonoBehaviour
 
     void OnTriggerStay(Collider col)
     {
+        if(col.tag == "PLAYER" && timer_attackCoolDown > attackCoolDown)
+        {
+            player.GetComponent<PlayerController>().recibirDanio(danio);
+        }
+
         if(col.tag == "ATTACK" && timer_DamageCoolDown > damageCoolDownTime)
         {
-            rb.AddForce(new Vector3(0f, 0f, -2f));
             float danioJugador = col.GetComponent<AtaqueJugador>().danio;
             hpActual -= danioJugador;
             timer_DamageCoolDown = 0;
