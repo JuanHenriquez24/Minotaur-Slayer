@@ -124,4 +124,13 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(Vector3.up * jump_force, ForceMode.Impulse);
         jumping = true;
     }
+
+    public void recibirDanio(float danio)
+    {
+        if(damage_cool_down > damageCoolDownTime)
+        {
+            HPActual -= danio;
+            damage_cool_down = 0;
+        }
+    }
 }
