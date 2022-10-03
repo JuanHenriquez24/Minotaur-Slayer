@@ -10,7 +10,10 @@ public class PlayerWeaponScript : MonoBehaviour
     private Animator anim;
     public AnimationClip animClip;
     [SerializeField] private string clipName;
+    public AnimationClip idleClip;
+    [SerializeField] private string idleClipName;
     public string boolName;
+    public string idleBool;
     
     void Start()
     {
@@ -22,6 +25,10 @@ public class PlayerWeaponScript : MonoBehaviour
             {
                 animClip = clip;
                 attackLength = animClip.length;
+            }
+            if(clip.name == idleClipName)
+            {
+                idleClip = clip;
             }
         }
     }
