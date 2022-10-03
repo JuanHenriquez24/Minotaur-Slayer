@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1993,7 +1993,10 @@ MonoBehaviour:
   brazos: {fileID: 2059372831}
   animClip: {fileID: 0}
   clipName: ataqueLanzaJugador
+  idleClip: {fileID: 0}
+  idleClipName: 
   boolName: 
+  idleBool: 
 --- !u!1 &338791218 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100384, guid: a73bf4bd9dc8ae149978d5528cbd6906,
@@ -10742,7 +10745,10 @@ MonoBehaviour:
   brazos: {fileID: 2059372831}
   animClip: {fileID: 0}
   clipName: ataqueEspadaJugador
+  idleClip: {fileID: 0}
+  idleClipName: IdleEspada
   boolName: AttackingEspada
+  idleBool: IdlingEspada
 --- !u!1 &1981219182 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100660, guid: a73bf4bd9dc8ae149978d5528cbd6906,
