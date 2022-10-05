@@ -8171,6 +8171,7 @@ MonoBehaviour:
   damageCoolDownTime: 0.5
   attackCoolDown: 5
   attackTime: 2
+  colorDanio: {r: 0.2735849, g: 0, b: 0, a: 0}
 --- !u!65 &1159986319
 BoxCollider:
   m_ObjectHideFlags: 0

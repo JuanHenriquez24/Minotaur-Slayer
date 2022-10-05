@@ -19,9 +19,12 @@ public class AtaqueEnemigo : MonoBehaviour
     private Transform parent;
     private NavMeshAgent agent;
     private float timer = 20;
+    [SerializeField] private Color colorDanio;
+    private Color ogColor;
 
     void Start()
     {
+        ogColor = GetComponent<MeshRenderer>().material.color;
         agent = GetComponent<NavMeshAgent>();
         parent = gameObject.transform.parent;
         for (int i = 0; i < parent.childCount; i++)
@@ -56,6 +59,7 @@ public class AtaqueEnemigo : MonoBehaviour
                 rb.isKinematic = true;
                 agent.enabled = true;
                 timer = 10;
+                GetComponent<MeshRenderer>().material.color = ogColor;
                 if (hpActual <= 0)
                 {
                     Destroy(gameObject);
@@ -84,6 +88,7 @@ public class AtaqueEnemigo : MonoBehaviour
             agent.enabled = false;
             rb.isKinematic = false;
             rb.AddRelativeForce(new Vector3(0, 100, -100));
+            GetComponent<MeshRenderer>().material.color = colorDanio;
             timer = 0;
             Debug.Log("hit");
         }
