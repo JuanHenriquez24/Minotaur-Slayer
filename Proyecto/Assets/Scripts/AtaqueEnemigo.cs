@@ -18,6 +18,7 @@ public class AtaqueEnemigo : MonoBehaviour
     private Transform player;
     private Transform parent;
     private NavMeshAgent agent;
+    private float timer = 20;
 
     void Start()
     {
@@ -44,14 +45,26 @@ public class AtaqueEnemigo : MonoBehaviour
 
         if (playing)
         {
-            agent.destination = player.position;
-
             timer_DamageCoolDown += Time.deltaTime;
             timer_attackCoolDown += Time.deltaTime;
 
-            if (hpActual <= 0)
+            
+            
+            timer += Time.deltaTime;
+            if(timer > 0.5 && timer < 10)
             {
-                Destroy(gameObject);
+                rb.isKinematic = true;
+                agent.enabled = true;
+                timer = 10;
+                if (hpActual <= 0)
+                {
+                    Destroy(gameObject);
+                }
+            }
+            else if(timer > 10)
+            {
+                agent.destination = player.position;
+
             }
         }
     }
@@ -68,6 +81,10 @@ public class AtaqueEnemigo : MonoBehaviour
             float danioJugador = col.GetComponent<AtaqueJugador>().danio;
             hpActual -= danioJugador;
             timer_DamageCoolDown = 0;
+            agent.enabled = false;
+            rb.isKinematic = false;
+            rb.AddRelativeForce(new Vector3(0, 100, -100));
+            timer = 0;
             Debug.Log("hit");
         }
     }
