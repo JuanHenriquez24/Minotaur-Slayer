@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class AtaqueEnemigo : MonoBehaviour
 {
@@ -16,10 +17,11 @@ public class AtaqueEnemigo : MonoBehaviour
     [SerializeField] private float attackTime;
     private Transform player;
     private Transform parent;
-
+    private NavMeshAgent agent;
 
     void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
         parent = gameObject.transform.parent;
         for (int i = 0; i < parent.childCount; i++)
         {
@@ -42,6 +44,8 @@ public class AtaqueEnemigo : MonoBehaviour
 
         if (playing)
         {
+            agent.destination = player.position;
+
             timer_DamageCoolDown += Time.deltaTime;
             timer_attackCoolDown += Time.deltaTime;
 
@@ -64,6 +68,7 @@ public class AtaqueEnemigo : MonoBehaviour
             float danioJugador = col.GetComponent<AtaqueJugador>().danio;
             hpActual -= danioJugador;
             timer_DamageCoolDown = 0;
+            Debug.Log("hit");
         }
     }
 }

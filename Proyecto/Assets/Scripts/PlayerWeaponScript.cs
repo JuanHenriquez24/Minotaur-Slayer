@@ -14,6 +14,7 @@ public class PlayerWeaponScript : MonoBehaviour
     [SerializeField] private string idleClipName;
     public string boolName;
     public string idleBool;
+    public float timeToAttack;
     
     void Start()
     {

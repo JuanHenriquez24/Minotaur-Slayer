@@ -20,6 +20,7 @@ public class AtaqueJugador : MonoBehaviour
     [SerializeField] private GameObject brazos;
     private string animBool;
     private string idleBool;
+    private float timeToAttack;
 
     void Start()
     {
@@ -42,13 +43,17 @@ public class AtaqueJugador : MonoBehaviour
             animBool = currentWeapond.GetComponent<PlayerWeaponScript>().boolName;
             timer_Cool_Down += Time.deltaTime;
             idleBool = currentWeapond.GetComponent<PlayerWeaponScript>().idleBool;
+            timeToAttack = currentWeapond.GetComponent<PlayerWeaponScript>().timeToAttack;
 
             if (Input.GetKeyDown(KeyCode.M) && timer_Cool_Down > coolDownActual)
             {
                 attacking = true;
                 anim.SetBool(animBool, true);
-                playerCollider.enabled = true;
                 timer_Cool_Down = 0;
+            }
+            if(attacking && timer_Cool_Down > timeToAttack)
+            {
+                playerCollider.enabled = true;
             }
             if (timer_Cool_Down > attackTime)
             {
