@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO.Ports;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class PlayerController : MonoBehaviour
     private bool jumping;
     private float damage_cool_down;
     [SerializeField] private float damageCoolDownTime;
+    [SerializeField] private Image damageOverlay;
+    private bool damaging = false;
 
     void Start()
     {
@@ -99,6 +102,12 @@ public class PlayerController : MonoBehaviour
 
             //damage cool down
             damage_cool_down += Time.deltaTime;
+
+            if(damage_cool_down > 0.3 && damaging)
+            {
+                damageOverlay.enabled = false;
+                damaging = false;
+            }
         }
     }
 
@@ -131,6 +140,9 @@ public class PlayerController : MonoBehaviour
         {
             HPActual -= danio;
             damage_cool_down = 0;
+            rb.AddRelativeForce(new Vector3(0, 100, -100));
+            damageOverlay.enabled = true;
+            damaging = true;
         }
     }
 }

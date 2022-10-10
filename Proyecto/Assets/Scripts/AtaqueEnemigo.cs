@@ -50,8 +50,6 @@ public class AtaqueEnemigo : MonoBehaviour
         {
             timer_DamageCoolDown += Time.deltaTime;
             timer_attackCoolDown += Time.deltaTime;
-
-            
             
             timer += Time.deltaTime;
             if(timer > 0.5 && timer < 10)
