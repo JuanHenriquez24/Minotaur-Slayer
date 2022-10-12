@@ -14,7 +14,7 @@ public class KeyInventory : MonoBehaviour
         playing = gameObject.GetComponentInParent<Playing>().playing;
         if (playing)
         {
-            if (Input.GetKeyDown(KeyCode.M) && en_rango_llave)
+            if (Input.GetKeyDown(KeyCode.Mouse0) && en_rango_llave)
             {
                 current_col.GetComponent<PickUpLlave>().pickedUp();
             }

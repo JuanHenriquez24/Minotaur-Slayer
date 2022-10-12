@@ -142,7 +142,8 @@ public class PlayerController : MonoBehaviour
             HPActual -= danio;
             damage_cool_down = 0;
             Vector3 direction = (transform.position - enemy.transform.position).normalized;
-            enemy.GetComponent<Rigidbody>().AddForce(direction * knockbackForce);
+            rb.AddForce(direction * knockbackForce);
+            rb.AddRelativeForce(new Vector3(0, knockbackForce, 0));
             damageOverlay.enabled = true;
             damaging = true;
         }

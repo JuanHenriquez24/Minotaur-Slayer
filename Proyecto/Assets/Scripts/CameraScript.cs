@@ -11,6 +11,7 @@ public class CameraScript : MonoBehaviour
     private bool playing;
     private float mouse_Y;
 
+
     void Update()
     {
         playing = gameObject.GetComponentInParent<Playing>().playing;
@@ -31,5 +32,9 @@ public class CameraScript : MonoBehaviour
             cam.transform.rotation = transform.rotation;
             cam.transform.position = transform.position;
         }
+    }
+    
+    public void terrmoto()
+    {
     }
 }

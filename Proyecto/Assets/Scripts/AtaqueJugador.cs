@@ -43,7 +43,7 @@ public class AtaqueJugador : MonoBehaviour
             idleBool = currentWeapond.GetComponent<PlayerWeaponScript>().idleBool;
             timeToAttack = currentWeapond.GetComponent<PlayerWeaponScript>().timeToAttack;
 
-            if (Input.GetKeyDown(KeyCode.M) && timer_Cool_Down > coolDownActual)
+            if (Input.GetKeyDown(KeyCode.Mouse0) && timer_Cool_Down > coolDownActual)
             {
                 attacking = true;
                 anim.SetBool(animBool, true);
