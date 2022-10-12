@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float damageCoolDownTime;
     [SerializeField] private Image damageOverlay;
     private bool damaging = false;
+    [SerializeField] private float knockbackForce;
 
     void Start()
     {
@@ -134,13 +135,14 @@ public class PlayerController : MonoBehaviour
         jumping = true;
     }
 
-    public void recibirDanio(float danio)
+    public void recibirDanio(float danio, GameObject enemy)
     {
         if(damage_cool_down > damageCoolDownTime)
         {
             HPActual -= danio;
             damage_cool_down = 0;
-            rb.AddRelativeForce(new Vector3(0, 100, -100));
+            Vector3 direction = (transform.position - enemy.transform.position).normalized;
+            enemy.GetComponent<Rigidbody>().AddForce(direction * knockbackForce);
             damageOverlay.enabled = true;
             damaging = true;
         }

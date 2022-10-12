@@ -8,9 +8,8 @@ public class PlayerWeaponScript : MonoBehaviour
     public float attackLength;
     [SerializeField] private GameObject brazos;
     private Animator anim;
-    public AnimationClip animClip;
+    private AnimationClip animClip;
     [SerializeField] private string clipName;
-    public AnimationClip idleClip;
     [SerializeField] private string idleClipName;
     public string boolName;
     public string idleBool;
@@ -26,10 +25,6 @@ public class PlayerWeaponScript : MonoBehaviour
             {
                 animClip = clip;
                 attackLength = animClip.length;
-            }
-            if(clip.name == idleClipName)
-            {
-                idleClip = clip;
             }
         }
     }

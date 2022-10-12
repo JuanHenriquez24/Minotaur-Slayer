@@ -36,9 +36,7 @@ public class AtaqueJugador : MonoBehaviour
         if (playing)
         {
             attackTime = currentWeapond.GetComponent<PlayerWeaponScript>().attackLength;
-            clipAtaque = currentWeapond.GetComponent<PlayerWeaponScript>().animClip;
             danio = currentWeapond.GetComponent<PlayerWeaponScript>().damage;
-            clipIdle = currentWeapond.GetComponent<PlayerWeaponScript>().idleClip;
             coolDownActual = coolDownTime + attackTime;
             animBool = currentWeapond.GetComponent<PlayerWeaponScript>().boolName;
             timer_Cool_Down += Time.deltaTime;
