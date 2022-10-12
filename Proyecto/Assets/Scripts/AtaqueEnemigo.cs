@@ -75,7 +75,7 @@ public class AtaqueEnemigo : MonoBehaviour
     {
         if(col.tag == "PLAYER" && timer_attackCoolDown > attackCoolDown)
         {
-            player.GetComponent<PlayerController>().recibirDanio(danio);
+            player.GetComponent<PlayerController>().recibirDanio(danio,gameObject);
         }
 
         if(col.tag == "ATTACK" && timer_DamageCoolDown > damageCoolDownTime)
