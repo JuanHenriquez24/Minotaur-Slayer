@@ -4,6 +4,8 @@ SPACE = saltar
 E = correr
 P = pausa
 M = atacar/levantar objeto
+Q = Soltar hilo
+F = Inventario
 
 -empezar con combate
 -loading
