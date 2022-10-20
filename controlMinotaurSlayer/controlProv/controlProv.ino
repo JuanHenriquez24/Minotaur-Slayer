@@ -15,6 +15,7 @@
 void setup() {
   Serial.begin(115000);
   Keyboard.begin();
+  Mouse.begin();
   
   pinMode(joySW1, INPUT_PULLUP);
   pinMode(joySW2, INPUT_PULLUP);
@@ -36,6 +37,7 @@ void loop() {
   int bot2Value = !digitalRead(bot2);
   int bot3Value = !digitalRead(bot3);
   int bot4Value = !digitalRead(bot4);
+  
   int x1Map = map(x1Value, 0, 1024, -46, 45);
   int y1Map = map(y1Value, 0, 1024, 45, -46);
   int x2Map = map(x2Value, 0, 1024, -46, 45);
@@ -93,22 +95,41 @@ void loop() {
     Keyboard.write('e');
     // correr
   }
-   if (bot1 == HIGH) {
+   if (bot1Value == HIGH) {
     Keyboard.write('m');
     // atacar / agarrar objetos
   }
-   if (bot2 == HIGH) {
+   if (bot2Value == HIGH) {
     Keyboard.write(32);
     // saltar
   }
-   if (bot3 == HIGH) {
+   if (bot3Value == HIGH) {
     Keyboard.write('q');
     // tirar hilo
   }
-   if (bot4 == HIGH) {
+   if (bot4Value == HIGH) {
     Keyboard.write('f');
     // inventario
   }
-  
 
+  if (x2Map > 10) {
+    Mouse.move(10, 0);
+    // adelante
+  }
+  if (x2Map < -10) {
+    Mouse.move(-10, 0);
+    // atras
+  }
+  if (y2Map > 10) {
+    Mouse.move(0, -10);
+    // derecha
+  }
+  if (y2Map < -10) {
+    Mouse.move(0, 10);
+    // izquierda
+  }
+     if (bot4Value == HIGH && bot3Value == HIGH) {
+    Keyboard.end();
+    Mouse.begin();
+     }
 }
