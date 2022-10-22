@@ -11,6 +11,13 @@ public class CameraScript : MonoBehaviour
     private bool playing;
     private float mouse_Y;
 
+    [SerializeField] private float terremotoDuracion;
+    [SerializeField] private float shakeAmount;
+    private bool shaking;
+    private int oneOrTwo;
+    private float shakeTimer;
+    public bool startTerremoto;
+
 
     void Update()
     {
@@ -18,6 +25,7 @@ public class CameraScript : MonoBehaviour
 
         if (playing)
         {
+
             //rotate on x
             mouse_Y = Input.GetAxis("Mouse Y");
             x_rot += -mouse_Y * sensitivity;
@@ -30,11 +38,40 @@ public class CameraScript : MonoBehaviour
 
             //camera follow
             cam.transform.rotation = transform.rotation;
-            cam.transform.position = transform.position;
+
+            if (!shaking)
+            {
+                cam.transform.position = transform.position;
+            }
+            else
+            {
+                shakeTimer += Time.deltaTime;
+                if (shakeTimer > terremotoDuracion)
+                {
+                    shaking = false;
+                }
+                else if(oneOrTwo > 4)
+                {
+                    cam.transform.localPosition = transform.position + Random.insideUnitSphere * shakeAmount;
+                    oneOrTwo = 0;
+                }
+                else
+                {
+                    oneOrTwo++;
+                }
+
+            }
+
+            if (startTerremoto)
+            {
+                StartTerrmoto();
+            }
         }
     }
     
-    public void terrmoto()
+    public void StartTerrmoto()
     {
+        shaking = true;
+        shakeTimer = 0;
     }
 }

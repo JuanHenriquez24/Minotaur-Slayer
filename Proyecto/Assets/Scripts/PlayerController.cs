@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Image damageOverlay;
     private bool damaging = false;
     [SerializeField] private float knockbackForce;
+    [SerializeField] private float knockbackForceUP;
 
     void Start()
     {
@@ -143,7 +144,7 @@ public class PlayerController : MonoBehaviour
             damage_cool_down = 0;
             Vector3 direction = (transform.position - enemy.transform.position).normalized;
             rb.AddForce(direction * knockbackForce);
-            rb.AddRelativeForce(new Vector3(0, knockbackForce, 0));
+            rb.AddRelativeForce(new Vector3(0, knockbackForceUP, 0));
             damageOverlay.enabled = true;
             damaging = true;
         }
