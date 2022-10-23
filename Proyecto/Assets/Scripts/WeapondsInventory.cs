@@ -5,19 +5,53 @@ using UnityEngine.UI;
 
 public class WeapondsInventory : MonoBehaviour
 {
-    [SerializeField] private Image[] array_UI_armas = new Image[3];
-    private int[] currentWeaponSlots;
+    [SerializeField] private GameObject[] array_armas;
+    [SerializeField] private Image[] UIarrayArmas;
+    private int currentWeaponSlot = 0;
+    private int availableWeapons;
+    [SerializeField] private GameObject espada;
+    private AtaqueJugador scritpAtaque;
 
-    public void cambiarArma()
+    private void Start()
     {
-        for(int i = 0; i < currentWeaponSlots.Length; i++)
+        array_armas[0] = espada;
+        scritpAtaque = GetComponent<AtaqueJugador>();
+        availableWeapons = array_armas.Length;
+        for(int i = 0; i < availableWeapons; i++)
         {
-            currentWeaponSlots[i] += 1;
-
-            if (currentWeaponSlots[i] > 2)
-            {
-                currentWeaponSlots[i] -= 3;
-            }
+            array_armas[i].SetActive(false);
         }
+        array_armas[currentWeaponSlot].SetActive(true);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            cambiarArma();
+        }
+    }
+
+    private void AgregarArma(GameObject nuevaArma)
+    {
+        array_armas[availableWeapons] = nuevaArma;
+        availableWeapons = array_armas.Length;
+    }
+
+    private void cambiarArma()
+    {
+        array_armas[currentWeaponSlot].SetActive(false);
+        currentWeaponSlot++;
+        if (currentWeaponSlot == availableWeapons)
+        {
+            currentWeaponSlot = 0;
+        }
+        array_armas[currentWeaponSlot].SetActive(true);
+        scritpAtaque.currentWeapond = array_armas[currentWeaponSlot];
+    }
+
+    private void updateInventory()
+    {
+
     }
 }

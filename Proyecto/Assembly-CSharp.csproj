@@ -60,15 +60,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\minotauro.cs" />
     <Compile Include="Assets\Scripts\AtaqueEnemigo.cs" />
     <Compile Include="Assets\Scripts\AtaqueJugador.cs" />
     <Compile Include="Assets\Scripts\CameraScript.cs" />
     <Compile Include="Assets\Scripts\ControlArduino\SerialConnection.cs" />
     <Compile Include="Assets\Scripts\HPController.cs" />
     <Compile Include="Assets\Scripts\KeyInventory.cs" />
+    <Compile Include="Assets\Scripts\minotauro.cs" />
     <Compile Include="Assets\Scripts\Movimiento_Enemigo.cs" />
-    <Compile Include="Assets\Scripts\NavMeshEnemy.cs" />
     <Compile Include="Assets\Scripts\PickUpLlave.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\PlayerWeaponScript.cs" />

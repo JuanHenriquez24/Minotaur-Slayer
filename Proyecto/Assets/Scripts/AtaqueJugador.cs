@@ -15,7 +15,7 @@ public class AtaqueJugador : MonoBehaviour
     private AnimationClip clipAtaque;
     private AnimationClip clipIdle;
     private bool attacking;
-    [SerializeField] private GameObject currentWeapond;
+    public GameObject currentWeapond;
     private Animator anim;
     [SerializeField] private GameObject brazos;
     private string animBool;
