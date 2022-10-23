@@ -514,8 +514,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1564,8 +1564,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2234,7 +2234,7 @@ MonoBehaviour:
   boolName: AttackingEspada
   idleBool: IdlingEspada
   timeToAttack: 0.8
-  inventoryColor: {r: 1, g: 0, b: 0, a: 0}
+  inventoryColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &338791218 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100384, guid: a73bf4bd9dc8ae149978d5528cbd6906,
@@ -3943,8 +3943,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4193,6 +4193,7 @@ MonoBehaviour:
   array_armas: []
   UIarrayArmas: []
   espada: {fileID: 0}
+  ogColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &645306687
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6299,7 +6300,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 692124346}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1697364936}
+        m_MethodName: restart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &692124346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9275,12 +9287,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   array_armas:
   - {fileID: 0}
-  - {fileID: 335885032}
   UIarrayArmas:
   - {fileID: 56935641}
   - {fileID: 611530538}
   - {fileID: 192296095}
   espada: {fileID: 1978265872}
+  ogColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
 --- !u!1 &1261817720 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100056, guid: a73bf4bd9dc8ae149978d5528cbd6906,
@@ -11268,6 +11280,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 297acb85481351743a4bb0bf6875bac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1697364935
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1697364937}
+  - component: {fileID: 1697364936}
+  m_Layer: 0
+  m_Name: SceneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1697364936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697364935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42f31fd8ea72fb41b7de2cfb28abe44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1697364937
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697364935}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 395.62772, y: 168.90353, z: 5.9682255}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1707543993 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100224, guid: a73bf4bd9dc8ae149978d5528cbd6906,
@@ -12794,7 +12849,7 @@ MonoBehaviour:
   boolName: AttackingEspada
   idleBool: IdlingEspada
   timeToAttack: 0.8
-  inventoryColor: {r: 0, g: 0.1275661, b: 1, a: 0}
+  inventoryColor: {r: 0, g: 0.1275661, b: 1, a: 1}
 --- !u!1 &1981219182 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100660, guid: a73bf4bd9dc8ae149978d5528cbd6906,
