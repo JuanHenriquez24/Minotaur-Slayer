@@ -865,7 +865,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2577827707441124229}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.400784, y: -0.855, z: 3.5408247}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
@@ -988,7 +988,7 @@ MonoBehaviour:
   hpMax: 50
   danio: 15
   damageCoolDownTime: 0.5
-  attackCoolDown: 5
+  attackCoolDown: 1
   attackTime: 2
   player: {fileID: 0}
   parent: {fileID: 0}

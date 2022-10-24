@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     private bool damaging = false;
     [SerializeField] private float knockbackForce;
     [SerializeField] private float knockbackForceUP;
+    [SerializeField] private GameObject sceneManager;
 
     void Start()
     {
@@ -109,6 +110,11 @@ public class PlayerController : MonoBehaviour
             {
                 damageOverlay.enabled = false;
                 damaging = false;
+            }
+
+            if(HPActual <= 0)
+            {
+                sceneManager.GetComponent<startEndLoseScreen>().loseGame();
             }
         }
     }

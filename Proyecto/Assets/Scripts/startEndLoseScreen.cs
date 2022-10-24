@@ -21,4 +21,8 @@ public class startEndLoseScreen : MonoBehaviour
     {
         SceneManager.LoadScene("Start");
     }
+    public void closeGame()
+    {
+        Application.Quit();
+    }
 }
