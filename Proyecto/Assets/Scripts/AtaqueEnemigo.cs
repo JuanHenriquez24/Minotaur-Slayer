@@ -115,7 +115,6 @@ public class AtaqueEnemigo : MonoBehaviour
                 materiales[i].color = colorDanio;
             }
             timer = 0;
-            Debug.Log("hit");
         }
     }
 }
