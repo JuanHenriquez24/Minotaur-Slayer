@@ -11,6 +11,18 @@ public class CameraScript : MonoBehaviour
     private bool playing;
     private float mouse_Y;
 
+    [SerializeField] private float terremotoDuracionBasic;
+    private float terremotoDuracion;
+    [SerializeField] private float shakeAmount;
+    private bool shaking;
+    private int oneOrTwo;
+    private float shakeTimer;
+    public bool startTerremoto;
+
+    private void Start()
+    {
+        terremotoDuracion = terremotoDuracionBasic;
+    }
 
     void Update()
     {
@@ -18,6 +30,7 @@ public class CameraScript : MonoBehaviour
 
         if (playing)
         {
+
             //rotate on x
             mouse_Y = Input.GetAxis("Mouse Y");
             x_rot += -mouse_Y * sensitivity;
@@ -28,13 +41,47 @@ public class CameraScript : MonoBehaviour
 
             transform.rotation = Quaternion.Euler(x_rot, y_rot, 0);
 
-            //camera follow
-            cam.transform.rotation = transform.rotation;
-            cam.transform.position = transform.position;
+            if (startTerremoto)
+            {
+                StartTerrmoto(terremotoDuracionBasic);
+            }
         }
     }
     
-    public void terrmoto()
+    void LateUpdate()
     {
+        //camera follow
+        cam.transform.rotation = transform.rotation;
+
+        if (!shaking)
+        {
+            cam.transform.position = transform.position;
+        }
+        else
+        {
+            shakeTimer += Time.deltaTime;
+            if (shakeTimer > terremotoDuracion)
+            {
+                shaking = false;
+            }
+            else if (oneOrTwo > 4)
+            {
+                cam.transform.localPosition = transform.position + Random.insideUnitSphere * shakeAmount;
+                oneOrTwo = 0;
+                terremotoDuracion = terremotoDuracionBasic;
+            }
+            else
+            {
+                oneOrTwo++;
+            }
+
+        }
+    }
+
+    public void StartTerrmoto(float time)
+    {
+        shaking = true;
+        shakeTimer = 0;
+        terremotoDuracion = time;
     }
 }
