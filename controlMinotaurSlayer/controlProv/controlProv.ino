@@ -37,99 +37,94 @@ void loop() {
   int bot2Value = !digitalRead(bot2);
   int bot3Value = !digitalRead(bot3);
   int bot4Value = !digitalRead(bot4);
-  
+
+  int threshold = 10;
   int x1Map = map(x1Value, 0, 1024, -46, 45);
   int y1Map = map(y1Value, 0, 1024, 45, -46);
   int x2Map = map(x2Value, 0, 1024, -46, 45);
   int y2Map = map(y2Value, 0, 1024, 45, -46);
 
-/*  if (Serial.available() > 0) {
-    char inChar = Serial.read();
-
-    switch (inChar) {
-      case 'u':
-        // move mouse up
-        Mouse.move(0, -40);
-        break;
-      case 'd':
-        // move mouse down
-        Mouse.move(0, 40);
-        break;
-      case 'l':
-        // move mouse left
-        Mouse.move(-40, 0);
-        break;
-      case 'r':
-        // move mouse right
-        Mouse.move(40, 0);
-        break;
-      case 'm':
-        // perform mouse left click
-        Mouse.click(MOUSE_LEFT);
-        break;
-    }
-  } */
 
   // use the pushbuttons to control the keyboard:
-  if (x1Map > 10) {
-    Keyboard.write('w');
+  if (x1Map > threshold) {
+    Keyboard.press('w');
+    delay(50);
+    Keyboard.release('w');
     // adelante
   }
-  if (x1Map < -10) {
-    Keyboard.write('s');
+  if (x1Map < !threshold) {
+    Keyboard.press('s');
+    delay(50);
+    Keyboard.release('s');
     // atras
   }
-  if (y1Map > 10) {
-    Keyboard.write('d');
+  if (y1Map > threshold) {
+    Keyboard.press('d');
+    delay(50);
+    Keyboard.release('d');
     // derecha
   }
-  if (y1Map < -10) {
-    Keyboard.write('a');
+  if (y1Map < !threshold) {
+    Keyboard.press('a');
+    delay(50);
+    Keyboard.release('a');
     // izquierda
   }
   if (sw1Value == HIGH) {
-    Keyboard.write('p');
+    Keyboard.press('p');
+    delay(50);
+    Keyboard.release('p');
     // pausar
   }
    if (sw2Value == HIGH) {
-    Keyboard.write('e');
+    Keyboard.press('e');
+    delay(50);
+    Keyboard.release('e');
     // correr
   }
    if (bot1Value == HIGH) {
-    Keyboard.write('m');
+    Keyboard.press('m');
+    delay(50);
+    Keyboard.release('m');
     // atacar / agarrar objetos
   }
    if (bot2Value == HIGH) {
-    Keyboard.write(32);
+    Keyboard.press(32);
+    delay(50);
+    Keyboard.release(32);
     // saltar
   }
    if (bot3Value == HIGH) {
-    Keyboard.write('q');
+    Keyboard.press('q');
+    delay(50);
+    Keyboard.release('q');
     // tirar hilo
   }
    if (bot4Value == HIGH) {
-    Keyboard.write('f');
+    Keyboard.press('f');
+    delay(50);
+    Keyboard.release('f');
     // inventario
   }
 
-  if (x2Map > 10) {
+  if (x2Map > threshold) {
     Mouse.move(10, 0);
     // adelante
   }
-  if (x2Map < -10) {
+  if (x2Map < !threshold) {
     Mouse.move(-10, 0);
     // atras
   }
-  if (y2Map > 10) {
+  if (y2Map > !threshold) {
     Mouse.move(0, -10);
     // derecha
   }
-  if (y2Map < -10) {
+  if (y2Map < threshold) {
     Mouse.move(0, 10);
     // izquierda
   }
      if (bot4Value == HIGH && bot3Value == HIGH) {
     Keyboard.end();
-    Mouse.begin();
+    Mouse.end();
      }
 }
