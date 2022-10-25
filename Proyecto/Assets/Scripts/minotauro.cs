@@ -24,10 +24,17 @@ public class minotauro : MonoBehaviour
     private Animator anim;
     [SerializeField] private float knockbackForceUP;
     [SerializeField] private float knockbackForce;
+    [SerializeField] private float speed;
+    private bool playerInRange;
+    private float timerAtaque;
+    private float attackTime;
+    [SerializeField] private float terremotoTiempo;
+    private float saltoTiempo;
+    private float timerSalto;
 
     void Start()
     {
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
         parent = gameObject.transform.parent;
         for (int i = 0; i < parent.childCount; i++)
         {
@@ -40,6 +47,21 @@ public class minotauro : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody>();
         hpActual = hpMax;
         timer_DamageCoolDown = damageCoolDownTime;
+
+        AnimationClip[] clips = anim.runtimeAnimatorController.animationClips;
+        foreach (AnimationClip clip in clips)
+        {
+            if (clip.name == "ataque")
+            {
+                attackTime = clip.length;
+            }
+            if(clip.name == "salto")
+            {
+                saltoTiempo = clip.length / 1.2f;
+            }
+        }
+        timerAtaque = 1000;
+        timerSalto = 1000;
     }
 
     void Update()
@@ -48,9 +70,12 @@ public class minotauro : MonoBehaviour
 
         if (playing)
         {
+            anim.enabled = true;
+            timerAtaque += Time.deltaTime;
             transform.LookAt(player);
-            transform.position += transform.forward * 5 * Time.deltaTime;
+            transform.position += transform.forward * speed * Time.deltaTime;
             timer_DamageCoolDown += Time.deltaTime;
+            timerSalto += Time.deltaTime;
 
             timer += Time.deltaTime;
             if (timer > 0.5 && timer < 10)
@@ -65,7 +90,47 @@ public class minotauro : MonoBehaviour
                     Destroy(gameObject);
                 }
             }
+
+            if (timerAtaque > attackTime)
+            {
+                anim.SetBool("atacar", false);
+            }
+            else if (timerAtaque > 1 && timerAtaque < 1.1 && playerInRange)
+            {
+                player.GetComponent<PlayerController>().recibirDanio(danio, gameObject);
+            }
+
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                ataqueHacha();
+            }
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                ataqueTerremoto();
+            }
+
+            if (timerSalto > saltoTiempo - 0.1 && timerSalto < saltoTiempo + 0.1)
+            {
+                player.GetComponentInChildren<CameraScript>().StartTerrmoto(terremotoTiempo);
+                anim.SetBool("terremoto", false);
+            }
         }
+        else
+        {
+            anim.enabled = false;
+        }
+    }
+
+    private void ataqueTerremoto()
+    {
+        anim.SetBool("terremoto", true);
+        timerSalto = 0;
+    }
+
+    private void ataqueHacha()
+    {
+        anim.SetBool("atacar", true);
+        timerAtaque = 0;
     }
 
     void OnTriggerEnter(Collider col)
@@ -84,6 +149,19 @@ public class minotauro : MonoBehaviour
                 materiales[i].color = colorDanio;
             }
             timer = 0;
+        }
+
+        if(col.tag == "PLAYER")
+        {
+            playerInRange = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider col)
+    {
+        if (col.tag == "PLAYER")
+        {
+            playerInRange = false;
         }
     }
 }

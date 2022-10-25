@@ -11,14 +11,17 @@ public class startEndLoseScreen : MonoBehaviour
     }
     public void loseGame()
     {
+        Cursor.visible = true;
         SceneManager.LoadScene("Lose");
     }
     public void winGame()
     {
+        Cursor.visible = true;
         SceneManager.LoadScene("Win");
     }
     public void restart()
     {
+        Cursor.visible = true;
         SceneManager.LoadScene("Start");
     }
     public void closeGame()

@@ -11,13 +11,18 @@ public class CameraScript : MonoBehaviour
     private bool playing;
     private float mouse_Y;
 
-    [SerializeField] private float terremotoDuracion;
+    [SerializeField] private float terremotoDuracionBasic;
+    private float terremotoDuracion;
     [SerializeField] private float shakeAmount;
     private bool shaking;
     private int oneOrTwo;
     private float shakeTimer;
     public bool startTerremoto;
 
+    private void Start()
+    {
+        terremotoDuracion = terremotoDuracionBasic;
+    }
 
     void Update()
     {
@@ -54,6 +59,7 @@ public class CameraScript : MonoBehaviour
                 {
                     cam.transform.localPosition = transform.position + Random.insideUnitSphere * shakeAmount;
                     oneOrTwo = 0;
+                    terremotoDuracion = terremotoDuracionBasic;
                 }
                 else
                 {
@@ -64,14 +70,15 @@ public class CameraScript : MonoBehaviour
 
             if (startTerremoto)
             {
-                StartTerrmoto();
+                StartTerrmoto(terremotoDuracionBasic);
             }
         }
     }
     
-    public void StartTerrmoto()
+    public void StartTerrmoto(float time)
     {
         shaking = true;
         shakeTimer = 0;
+        terremotoDuracion = time;
     }
 }

@@ -23,6 +23,7 @@ public class AtaqueEnemigo : MonoBehaviour
     [SerializeField] private Material[] materiales;
     [SerializeField] private Color ogMaterialColor;
     private Animator anim;
+    private bool playerInRange;
 
     void Start()
     {
@@ -58,6 +59,7 @@ public class AtaqueEnemigo : MonoBehaviour
 
         if (playing)
         {
+            agent.isStopped = false;
             timer_DamageCoolDown += Time.deltaTime;
             timer_attackCoolDown += Time.deltaTime;
             
@@ -86,10 +88,14 @@ public class AtaqueEnemigo : MonoBehaviour
                 anim.SetBool("atacar", false);
                 agent.stoppingDistance = 0f;
             }
-            else if (timer_attackCoolDown > 0.3 && timer_attackCoolDown < 0.4)
+            else if (timer_attackCoolDown > 0.3 && timer_attackCoolDown < 0.4 && playerInRange)
             {
                 player.GetComponent<PlayerController>().recibirDanio(danio, gameObject);
             }
+        }
+        else
+        {
+            agent.isStopped = true;
         }
     }
 
@@ -115,6 +121,22 @@ public class AtaqueEnemigo : MonoBehaviour
                 materiales[i].color = colorDanio;
             }
             timer = 0;
+        }
+    }
+
+    private void OnTriggerEnter(Collider col)
+    {
+        if (col.tag == "PLAYER")
+        {
+            playerInRange = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider col)
+    {
+        if (col.tag == "PLAYER")
+        {
+            playerInRange = false;
         }
     }
 }
