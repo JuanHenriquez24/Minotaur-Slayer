@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 548}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -46,7 +46,7 @@ MonoBehaviour:
     y: 0
     width: 1366
     height: 685
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 548}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 498}
   m_MaxSize: {x: 18008, y: 14048}
   vertical: 0
-  controlID: 51
+  controlID: 14731
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_MinSize: {x: 436, y: 498}
   m_MaxSize: {x: 14006, y: 14048}
   vertical: 1
-  controlID: 52
+  controlID: 14732
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 224}
   m_MaxSize: {x: 8006, y: 4024}
   vertical: 0
-  controlID: 53
+  controlID: 14733
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_MinSize: {x: 436, y: 274}
   m_MaxSize: {x: 14006, y: 10024}
   vertical: 0
-  controlID: 74
+  controlID: 14651
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -350,7 +350,7 @@ MonoBehaviour:
     width: 494
     height: 341
   m_PersistentViewDataDictionary: {fileID: 0}
-  m_MaximizeOnPlay: 0
+  m_MaximizeOnPlay: 1
   m_Gizmos: 0
   m_Stats: 0
   m_SelectedSizes: 05000000000000000000000000000000000000000000000000000000000000000000000000000000
@@ -435,9 +435,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0, y: 0.79499996, z: 0}
+    m_Target: {x: 195.04419, y: -1.1852053, z: 99.628944}
     speed: 2
-    m_Value: {x: 0, y: 0.79499996, z: 0}
+    m_Value: {x: 195.04419, y: -1.1852053, z: 99.628944}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -465,13 +465,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.19547115, y: -0.5969209, z: 0.15293422, w: -0.76294667}
+    m_Target: {x: 0.0052047805, y: -0.9883386, z: 0.1481706, w: 0.03471821}
     speed: 2
-    m_Value: {x: -0.19547115, y: -0.5969209, z: 0.15293422, w: -0.76294667}
+    m_Value: {x: 0.0052047805, y: -0.9883386, z: 0.1481706, w: 0.03471821}
   m_Size:
-    m_Target: 2.7982466
+    m_Target: 13.021073
     speed: 2
-    m_Value: 2.7982466
+    m_Value: 13.021073
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -505,15 +505,16 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 73.6
-    width: 634
-    height: 429
+    y: 73
+    width: 522
+    height: 341
   m_PersistentViewDataDictionary: {fileID: 0}
   m_ViewTransforms:
     m_KeySerializationHelper:
     - {fileID: 1107085247197346680, guid: 9edfeb80e1ec11840ac2524fc5707775, type: 2}
     - {fileID: 1107841452097612242, guid: 2fc88da4c115a6446ac41e3e91f2049f, type: 2}
     - {fileID: 1107798140717400376, guid: e90166252aaf60b4fa025542efebdddb, type: 2}
+    - {fileID: 1107760692089721298, guid: 82389f19980055d4b81acf7c4d287735, type: 2}
     m_ValueSerializationHelper:
     - e00: 0.3177481
       e01: 0
@@ -563,11 +564,27 @@ MonoBehaviour:
       e31: 0
       e32: 0
       e33: 1
+    - e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: e90166252aaf60b4fa025542efebdddb,
+  m_AnimatorController: {fileID: 9100000, guid: 2fc88da4c115a6446ac41e3e91f2049f,
     type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: 1107798140717400376, guid: e90166252aaf60b4fa025542efebdddb,
+  - m_Target: {fileID: 1107841452097612242, guid: 2fc88da4c115a6446ac41e3e91f2049f,
       type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
@@ -619,19 +636,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/ControlArduino
+    - Assets/prefabs
   m_ViewMode: 1
   m_StartGridSize: 57
   m_LastFolders:
-  - Assets/Scripts/ControlArduino
+  - Assets/prefabs
   m_LastFoldersGridSize: 57
   m_LastProjectPath: C:\Users\46483443\Desktop\Minotaur-Slayer\Proyecto
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 60}
-    m_SelectedIDs: 2c0c0000
-    m_LastClickedID: 3116
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 380b0000
+    m_LastClickedID: 2872
     m_ExpandedIDs: 00000000fe090000900a0000d40b0000260c0000460c0000700c0000220d00002e0d00008248000084480000864800008848000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -660,7 +677,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000fe090000900a0000d40b0000260c0000460c0000700c0000220d00002e0d000082480000844800008648000088480000
+    m_ExpandedIDs: 00000000fe090000900a0000d40b0000260c0000460c0000700c0000220d00002e0d00008248000084480000864800008848000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -687,8 +704,8 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c6230000a24400001c3d0000144600008888000000000000
+    m_HadKeyboardFocusLastEvent: 0
+    m_ExpandedInstanceIDs: c6230000a24400001c3d00001446000088880000000000009c480000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -770,8 +787,8 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 961f0000
-      m_LastClickedID: 8086
+      m_SelectedIDs: 
+      m_LastClickedID: 0
       m_ExpandedIDs: defbffffdc1700004c1a0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -827,7 +844,7 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_PreviewResizer:
-    m_CachedPref: -127
+    m_CachedPref: 292
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
@@ -852,8 +869,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1086
+    x: 1022
     y: 73
-    width: 278
+    width: 342
     height: 615
   m_PersistentViewDataDictionary: {fileID: 0}
