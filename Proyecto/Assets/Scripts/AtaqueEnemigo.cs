@@ -15,16 +15,19 @@ public class AtaqueEnemigo : MonoBehaviour
     private float timer_attackCoolDown;
     [SerializeField] private float attackCoolDown;
     [SerializeField] private float attackTime;
-    private Transform player;
-    private Transform parent;
+    [SerializeField] private Transform player;
+    [SerializeField] private Transform parent;
     private NavMeshAgent agent;
     private float timer = 20;
     [SerializeField] private Color colorDanio;
-    private Color ogColor;
+    [SerializeField] private Material[] materiales;
+    [SerializeField] private Color ogMaterialColor;
+    private Animator anim;
+    private bool playerInRange;
 
     void Start()
     {
-        ogColor = GetComponent<MeshRenderer>().material.color;
+        anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         parent = gameObject.transform.parent;
         for (int i = 0; i < parent.childCount; i++)
@@ -38,6 +41,14 @@ public class AtaqueEnemigo : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody>();
         hpActual = hpMax;
         timer_DamageCoolDown = damageCoolDownTime;
+        AnimationClip[] clips = anim.runtimeAnimatorController.animationClips;
+        foreach (AnimationClip clip in clips)
+        {
+            if (clip.name == "attack")
+            {
+                attackTime = clip.length;
+            }
+        }
         attackCoolDown += attackTime;
         timer_attackCoolDown = attackCoolDown;
     }
@@ -48,16 +59,20 @@ public class AtaqueEnemigo : MonoBehaviour
 
         if (playing)
         {
+            agent.isStopped = false;
             timer_DamageCoolDown += Time.deltaTime;
             timer_attackCoolDown += Time.deltaTime;
             
             timer += Time.deltaTime;
             if(timer > 0.5 && timer < 10)
             {
+                for (int i = 0; i < materiales.Length; i++)
+                {
+                    materiales[i].color = ogMaterialColor;
+                }
                 rb.isKinematic = true;
                 agent.enabled = true;
                 timer = 10;
-                GetComponent<MeshRenderer>().material.color = ogColor;
                 if (hpActual <= 0)
                 {
                     Destroy(gameObject);
@@ -66,8 +81,21 @@ public class AtaqueEnemigo : MonoBehaviour
             else if(timer > 10)
             {
                 agent.destination = player.position;
-
             }
+
+            if (timer_attackCoolDown > attackTime)
+            {
+                anim.SetBool("atacar", false);
+                agent.stoppingDistance = 0f;
+            }
+            else if (timer_attackCoolDown > 0.3 && timer_attackCoolDown < 0.4 && playerInRange)
+            {
+                player.GetComponent<PlayerController>().recibirDanio(danio, gameObject);
+            }
+        }
+        else
+        {
+            agent.isStopped = true;
         }
     }
 
@@ -75,7 +103,9 @@ public class AtaqueEnemigo : MonoBehaviour
     {
         if(col.tag == "PLAYER" && timer_attackCoolDown > attackCoolDown)
         {
-            player.GetComponent<PlayerController>().recibirDanio(danio,gameObject);
+            anim.SetBool("atacar", true);
+            agent.stoppingDistance = 1.6f;
+            timer_attackCoolDown = 0;
         }
 
         if(col.tag == "ATTACK" && timer_DamageCoolDown > damageCoolDownTime)
@@ -86,9 +116,27 @@ public class AtaqueEnemigo : MonoBehaviour
             agent.enabled = false;
             rb.isKinematic = false;
             rb.AddRelativeForce(new Vector3(0, 100, -100));
-            GetComponent<MeshRenderer>().material.color = colorDanio;
+            for (int i = 0; i < materiales.Length; i++)
+            {
+                materiales[i].color = colorDanio;
+            }
             timer = 0;
-            Debug.Log("hit");
+        }
+    }
+
+    private void OnTriggerEnter(Collider col)
+    {
+        if (col.tag == "PLAYER")
+        {
+            playerInRange = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider col)
+    {
+        if (col.tag == "PLAYER")
+        {
+            playerInRange = false;
         }
     }
 }

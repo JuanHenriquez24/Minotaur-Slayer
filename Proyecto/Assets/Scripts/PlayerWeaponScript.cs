@@ -14,6 +14,7 @@ public class PlayerWeaponScript : MonoBehaviour
     public string boolName;
     public string idleBool;
     public float timeToAttack;
+    public Color inventoryColor;
     
     void Start()
     {
