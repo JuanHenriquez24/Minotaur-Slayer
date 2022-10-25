@@ -41,33 +41,6 @@ public class CameraScript : MonoBehaviour
 
             transform.rotation = Quaternion.Euler(x_rot, y_rot, 0);
 
-            //camera follow
-            cam.transform.rotation = transform.rotation;
-
-            if (!shaking)
-            {
-                cam.transform.position = transform.position;
-            }
-            else
-            {
-                shakeTimer += Time.deltaTime;
-                if (shakeTimer > terremotoDuracion)
-                {
-                    shaking = false;
-                }
-                else if(oneOrTwo > 4)
-                {
-                    cam.transform.localPosition = transform.position + Random.insideUnitSphere * shakeAmount;
-                    oneOrTwo = 0;
-                    terremotoDuracion = terremotoDuracionBasic;
-                }
-                else
-                {
-                    oneOrTwo++;
-                }
-
-            }
-
             if (startTerremoto)
             {
                 StartTerrmoto(terremotoDuracionBasic);
@@ -75,6 +48,36 @@ public class CameraScript : MonoBehaviour
         }
     }
     
+    void LateUpdate()
+    {
+        //camera follow
+        cam.transform.rotation = transform.rotation;
+
+        if (!shaking)
+        {
+            cam.transform.position = transform.position;
+        }
+        else
+        {
+            shakeTimer += Time.deltaTime;
+            if (shakeTimer > terremotoDuracion)
+            {
+                shaking = false;
+            }
+            else if (oneOrTwo > 4)
+            {
+                cam.transform.localPosition = transform.position + Random.insideUnitSphere * shakeAmount;
+                oneOrTwo = 0;
+                terremotoDuracion = terremotoDuracionBasic;
+            }
+            else
+            {
+                oneOrTwo++;
+            }
+
+        }
+    }
+
     public void StartTerrmoto(float time)
     {
         shaking = true;
