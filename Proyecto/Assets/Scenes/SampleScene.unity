@@ -289,6 +289,7 @@ Transform:
   - {fileID: 770045116}
   - {fileID: 388124092}
   - {fileID: 2130341454}
+  - {fileID: 77018142}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -648,7 +649,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7fe2978e769f44aaf99ca33d131b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  en_rango_obj: 0
   object_UI: {fileID: 1858801873}
   color:
     serializedVersion: 2
@@ -733,6 +733,111 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.20018214, y: 13.645627, z: 4.231937}
   m_Center: {x: -0.000005643815, y: 8.8588035e-29, z: -0.33227533}
+--- !u!1 &77018141
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 77018142}
+  - component: {fileID: 77018146}
+  - component: {fileID: 77018145}
+  - component: {fileID: 77018144}
+  - component: {fileID: 77018143}
+  m_Layer: 0
+  m_Name: LanzaPickUP
+  m_TagString: w
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &77018142
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77018141}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 16234556}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &77018143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77018141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c66ab610ea6cd84d889cfc67a667bc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arma: {fileID: 335885032}
+--- !u!65 &77018144
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77018141}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &77018145
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77018141}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &77018146
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77018141}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &79222132 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100388, guid: a73bf4bd9dc8ae149978d5528cbd6906,
@@ -2655,7 +2760,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7fe2978e769f44aaf99ca33d131b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  en_rango_obj: 0
   object_UI: {fileID: 1594747987}
   color:
     serializedVersion: 2
@@ -3843,7 +3947,6 @@ GameObject:
   - component: {fileID: 643924182}
   - component: {fileID: 643924180}
   - component: {fileID: 643924183}
-  - component: {fileID: 643924184}
   m_Layer: 0
   m_Name: PLAYER
   m_TagString: PLAYER
@@ -3859,7 +3962,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 643924178}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 151.5, y: 1.56, z: 101.1}
+  m_LocalPosition: {x: 23.1, y: 1.56, z: 4.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 367492488}
@@ -3941,22 +4044,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.06321202, y: 0.07937157, z: 0.055870265}
   m_Center: {x: 0.000000007450581, y: -0.84755236, z: -0.0007892996}
---- !u!114 &643924184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 643924178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ae769185b3c6a6428099bbbb0455ade, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  array_armas: []
-  UIarrayArmas: []
-  espada: {fileID: 0}
-  ogColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &645306687
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6747,7 +6834,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7fe2978e769f44aaf99ca33d131b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  en_rango_obj: 0
   object_UI: {fileID: 574213062}
   color:
     serializedVersion: 2

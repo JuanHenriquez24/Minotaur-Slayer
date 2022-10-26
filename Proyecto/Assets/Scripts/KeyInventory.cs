@@ -25,7 +25,6 @@ public class KeyInventory : MonoBehaviour
     {
         if (col.tag == "LLAVE")
         {
-            col.GetComponent<PickUpLlave>().en_rango_obj = true;
             en_rango_llave = true;
             current_col = col;
             
@@ -35,7 +34,6 @@ public class KeyInventory : MonoBehaviour
     {
         if (col.tag == "LLAVE")
         {
-            col.GetComponent<PickUpLlave>().en_rango_obj = false;
             en_rango_llave = false;
         }
     }

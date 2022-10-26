@@ -62,6 +62,7 @@
      <Compile Include="Assets\Scripts\minotauro.cs" />
      <Compile Include="Assets\Scripts\Movimiento_Enemigo.cs" />
      <Compile Include="Assets\Scripts\PickUpLlave.cs" />
+     <Compile Include="Assets\Scripts\PickUpWeapon.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PlayerWeaponScript.cs" />
      <Compile Include="Assets\Scripts\Playing.cs" />
