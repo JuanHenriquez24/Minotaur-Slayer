@@ -12,6 +12,8 @@ TagManager:
   - LLAVE
   - ARMAS
   - ATTACK
+  - WEAPON
+  - w
   layers:
   - Default
   - TransparentFX
