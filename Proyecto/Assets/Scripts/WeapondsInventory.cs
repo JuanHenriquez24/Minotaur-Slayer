@@ -12,6 +12,9 @@ public class WeapondsInventory : MonoBehaviour
     [SerializeField] private GameObject espada;
     private AtaqueJugador scritpAtaque;
     [SerializeField] private Color ogColor;
+    private bool enRangoArma;
+    private GameObject armaEnRango;
+    private bool playing;
 
     private void Start()
     {
@@ -28,15 +31,27 @@ public class WeapondsInventory : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        playing = gameObject.GetComponentInParent<Playing>().playing;
+        if (playing)
         {
-            cambiarArma();
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                cambiarArma();
+            }
+
+            if(Input.GetKeyDown(KeyCode.M) && enRangoArma)
+            {
+                Debug.Log("picking");
+                AgregarArma(armaEnRango.GetComponent<PickUpWeapon>().arma);
+                armaEnRango.GetComponent<PickUpWeapon>().pickedUp();
+            }
         }
     }
 
     private void AgregarArma(GameObject nuevaArma)
     {
         array_armas[availableWeapons] = nuevaArma;
+        UIarrayArmas[availableWeapons].color = nuevaArma.GetComponent<PlayerWeaponScript>().inventoryColor;
         availableWeapons = array_armas.Length;
     }
 
@@ -71,6 +86,25 @@ public class WeapondsInventory : MonoBehaviour
                 UIarrayArmas[i].color = array_armas[r].GetComponent<PlayerWeaponScript>().inventoryColor;
                 r++;
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider col)
+    {
+        Debug.Log("colliding");
+        if (col.name == "LanzaPickUP")
+        {
+            Debug.Log("En rango");
+            enRangoArma = true;
+            armaEnRango = col.gameObject;
+        }
+    }
+    private void OnTriggerExit(Collider col)
+    {
+        if (col.tag == "w")
+        {
+            Debug.Log("Fuera de rango");
+            enRangoArma = false;
         }
     }
 }

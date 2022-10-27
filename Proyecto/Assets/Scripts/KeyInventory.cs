@@ -14,7 +14,7 @@ public class KeyInventory : MonoBehaviour
         playing = gameObject.GetComponentInParent<Playing>().playing;
         if (playing)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0) && en_rango_llave)
+            if (Input.GetKeyDown(KeyCode.M) && en_rango_llave)
             {
                 current_col.GetComponent<PickUpLlave>().pickedUp();
             }
@@ -25,7 +25,6 @@ public class KeyInventory : MonoBehaviour
     {
         if (col.tag == "LLAVE")
         {
-            col.GetComponent<PickUpLlave>().en_rango_obj = true;
             en_rango_llave = true;
             current_col = col;
             
@@ -35,7 +34,6 @@ public class KeyInventory : MonoBehaviour
     {
         if (col.tag == "LLAVE")
         {
-            col.GetComponent<PickUpLlave>().en_rango_obj = false;
             en_rango_llave = false;
         }
     }
