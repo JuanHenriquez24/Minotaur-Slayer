@@ -15,12 +15,17 @@ public class WeapondsInventory : MonoBehaviour
     private bool enRangoArma;
     private GameObject armaEnRango;
     private bool playing;
+    private pickUpCollision script;
+    private Animator anim;
+    [SerializeField] GameObject brazos;
 
     private void Start()
     {
+        anim = brazos.GetComponent<Animator>();
+        script = GetComponentInParent<pickUpCollision>();
         array_armas[0] = espada;
         scritpAtaque = GetComponent<AtaqueJugador>();
-        availableWeapons = array_armas.Length;
+        availableWeapons = 1;
         for(int i = 0; i < availableWeapons; i++)
         {
             array_armas[i].SetActive(false);
@@ -34,14 +39,15 @@ public class WeapondsInventory : MonoBehaviour
         playing = gameObject.GetComponentInParent<Playing>().playing;
         if (playing)
         {
+            enRangoArma = script.enRangoArma;
+            armaEnRango = script.armaEnRango;
             if (Input.GetKeyDown(KeyCode.F))
             {
-                cambiarArma();
+                StartCoroutine(cambiarArma());
             }
 
             if(Input.GetKeyDown(KeyCode.M) && enRangoArma)
             {
-                Debug.Log("picking");
                 AgregarArma(armaEnRango.GetComponent<PickUpWeapon>().arma);
                 armaEnRango.GetComponent<PickUpWeapon>().pickedUp();
             }
@@ -52,11 +58,15 @@ public class WeapondsInventory : MonoBehaviour
     {
         array_armas[availableWeapons] = nuevaArma;
         UIarrayArmas[availableWeapons].color = nuevaArma.GetComponent<PlayerWeaponScript>().inventoryColor;
-        availableWeapons = array_armas.Length;
+        availableWeapons++;
+        script.enRangoArma = false;
     }
 
-    private void cambiarArma()
+    IEnumerator cambiarArma()
     {
+        anim.SetBool(array_armas[currentWeaponSlot].GetComponent<PlayerWeaponScript>().changeBool, true);
+        yield return new WaitForSeconds(0.5f);
+        anim.SetBool(array_armas[currentWeaponSlot].GetComponent<PlayerWeaponScript>().changeBool, false);
         array_armas[currentWeaponSlot].SetActive(false);
         currentWeaponSlot++;
         if (currentWeaponSlot >= array_armas.Length)
@@ -81,30 +91,11 @@ public class WeapondsInventory : MonoBehaviour
                 UIarrayArmas[i].color = array_armas[r].GetComponent<PlayerWeaponScript>().inventoryColor;
                 r++;
             }
-            else if(r > currentWeaponSlot || r < currentWeaponSlot)
+            else if((r > currentWeaponSlot || r < currentWeaponSlot) && array_armas[r])
             {
                 UIarrayArmas[i].color = array_armas[r].GetComponent<PlayerWeaponScript>().inventoryColor;
                 r++;
             }
-        }
-    }
-
-    private void OnTriggerEnter(Collider col)
-    {
-        Debug.Log("colliding");
-        if (col.name == "LanzaPickUP")
-        {
-            Debug.Log("En rango");
-            enRangoArma = true;
-            armaEnRango = col.gameObject;
-        }
-    }
-    private void OnTriggerExit(Collider col)
-    {
-        if (col.tag == "w")
-        {
-            Debug.Log("Fuera de rango");
-            enRangoArma = false;
         }
     }
 }

@@ -15,6 +15,7 @@ public class PlayerWeaponScript : MonoBehaviour
     public string idleBool;
     public float timeToAttack;
     public Color inventoryColor;
+    public string changeBool;
     
     void Start()
     {
