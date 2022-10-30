@@ -24,6 +24,7 @@ public class AtaqueEnemigo : MonoBehaviour
     [SerializeField] private Color ogMaterialColor;
     private Animator anim;
     private bool playerInRange;
+    [SerializeField] private GameObject hpPrefab;
 
     void Start()
     {
@@ -75,6 +76,13 @@ public class AtaqueEnemigo : MonoBehaviour
                 timer = 10;
                 if (hpActual <= 0)
                 {
+                    int cantHp = Random.Range(20, 30);
+                    for (int i = 0; i < cantHp; i++)
+                    {
+                        Vector3 pos = new Vector3(Random.Range(-1f, 1.1f), 0, Random.Range(-1f, 1.1f));
+                        GameObject hp = Instantiate(hpPrefab, transform.position + pos, transform.rotation);
+                        hp.transform.parent = transform.parent;
+                    }
                     Destroy(gameObject);
                 }
             }

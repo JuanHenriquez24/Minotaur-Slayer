@@ -14,6 +14,7 @@ TagManager:
   - ATTACK
   - WEAPON
   - w
+  - hp
   layers:
   - Default
   - TransparentFX
