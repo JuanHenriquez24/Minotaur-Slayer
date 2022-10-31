@@ -15,6 +15,7 @@ TagManager:
   - WEAPON
   - w
   - hp
+  - pared
   layers:
   - Default
   - TransparentFX

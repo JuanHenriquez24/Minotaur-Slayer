@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class minotauro : MonoBehaviour
 {
-    // 1 = terremotear, 2 = atacar
-    private int phase;
-
+    private int nextAttack;
     
     [SerializeField] private float hpMax;
     private float hpActual;
@@ -25,12 +23,17 @@ public class minotauro : MonoBehaviour
     [SerializeField] private float knockbackForceUP;
     [SerializeField] private float knockbackForce;
     [SerializeField] private float speed;
-    private bool playerInRange;
+    private bool playerInRange = false;
     private float timerAtaque;
     private float attackTime;
     [SerializeField] private float terremotoTiempo;
     private float saltoTiempo;
     private float timerSalto;
+    private float playerDistance;
+    private bool[] hachaYterremotoAtaques = new bool[2];
+    private bool contraPared = false;
+    private float timerToNextAttack;
+    private float timeToNextAttack;
 
     void Start()
     {
@@ -62,6 +65,9 @@ public class minotauro : MonoBehaviour
         }
         timerAtaque = 1000;
         timerSalto = 1000;
+        hachaYterremotoAtaques[0] = false;
+        hachaYterremotoAtaques[1] = false;
+        timeToNextAttack = Random.Range(5f, 10f);
     }
 
     void Update()
@@ -73,11 +79,40 @@ public class minotauro : MonoBehaviour
             anim.enabled = true;
             timerAtaque += Time.deltaTime;
             transform.LookAt(player);
-            transform.position += transform.forward * speed * Time.deltaTime;
             timer_DamageCoolDown += Time.deltaTime;
             timerSalto += Time.deltaTime;
-
             timer += Time.deltaTime;
+            playerDistance = Vector3.Distance(player.position, transform.position);
+            timerToNextAttack += Time.deltaTime;
+            
+            if(timerToNextAttack > timeToNextAttack)
+            {
+                hachaYterremotoAtaques[nextAttack] = true;
+            }
+
+            if (hachaYterremotoAtaques[0] && !playerInRange)
+            {
+                transform.position += transform.forward * Time.deltaTime * speed;
+            }
+            else if (hachaYterremotoAtaques[0] && playerInRange)
+            {
+                ataqueHacha();
+            }
+
+            if(hachaYterremotoAtaques[1] && playerDistance <= 8)
+            {
+                transform.position -= transform.forward * Time.deltaTime * speed;
+            }
+            else if(hachaYterremotoAtaques[1] && playerDistance >= 8)
+            {
+                ataqueTerremoto();
+            }
+            if(hachaYterremotoAtaques[1] && contraPared)
+            {
+                ataqueTerremoto();
+            }
+            
+
             if (timer > 0.5 && timer < 10)
             {
                 for (int i = 0; i < materiales.Length; i++)
@@ -100,15 +135,6 @@ public class minotauro : MonoBehaviour
                 player.GetComponent<PlayerController>().recibirDanio(danio, gameObject);
             }
 
-            if (Input.GetKeyDown(KeyCode.H))
-            {
-                ataqueHacha();
-            }
-            if (Input.GetKeyDown(KeyCode.G))
-            {
-                ataqueTerremoto();
-            }
-
             if (timerSalto > saltoTiempo - 0.1 && timerSalto < saltoTiempo + 0.1)
             {
                 player.GetComponentInChildren<CameraScript>().StartTerrmoto(terremotoTiempo);
@@ -120,17 +146,42 @@ public class minotauro : MonoBehaviour
             anim.enabled = false;
         }
     }
+    
+    private void determineNextAttack()
+    {
+        timerToNextAttack = 0;
+        timeToNextAttack = Random.Range(5f, 10f);
+        hachaYterremotoAtaques[0] = false;
+        hachaYterremotoAtaques[1] = false;
+        if (hpActual < hpMax / 3)
+        {
+            //phase 1
+            nextAttack = 1;
+        }
+        else if (hpActual < hpMax / 3 * 2)
+        {
+            //phase 2
+            nextAttack = Random.Range(0, 2);
+        }
+        else
+        {
+            //phase 3
+            nextAttack = 0;
+        }
+    }
 
     private void ataqueTerremoto()
     {
         anim.SetBool("terremoto", true);
         timerSalto = 0;
+        determineNextAttack();
     }
 
     private void ataqueHacha()
     {
         anim.SetBool("atacar", true);
         timerAtaque = 0;
+        determineNextAttack();
     }
 
     void OnTriggerEnter(Collider col)
@@ -162,6 +213,21 @@ public class minotauro : MonoBehaviour
         if (col.tag == "PLAYER")
         {
             playerInRange = false;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.tag == "pared")
+        {
+            contraPared = true;
+        }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.collider.tag == "pared")
+        {
+            contraPared = false;
         }
     }
 }

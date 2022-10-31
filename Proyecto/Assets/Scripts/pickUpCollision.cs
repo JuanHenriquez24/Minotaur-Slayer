@@ -19,6 +19,7 @@ public class pickUpCollision : MonoBehaviour
         {
             enRangoArma = true;
             armaEnRango = col.gameObject;
+            col.GetComponent<PickUpWeapon>().brillo.SetActive(true);
         }
         else if(col.tag == "hp" && hp < 100)
         {
@@ -32,6 +33,7 @@ public class pickUpCollision : MonoBehaviour
         if (col.tag == "WEAPON")
         {
             enRangoArma = false;
+            col.GetComponent<PickUpWeapon>().brillo.SetActive(false);
         }
     }
 }
