@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class minotauro : MonoBehaviour
 {
-    private int nextAttack;
+    public int nextAttack;
     
     [SerializeField] private float hpMax;
     private float hpActual;
@@ -29,11 +29,12 @@ public class minotauro : MonoBehaviour
     [SerializeField] private float terremotoTiempo;
     private float saltoTiempo;
     private float timerSalto;
-    private float playerDistance;
-    private bool[] hachaYterremotoAtaques = new bool[2];
-    private bool contraPared = false;
-    private float timerToNextAttack;
-    private float timeToNextAttack;
+    public float playerDistance;
+    public bool[] hachaYterremotoAtaques = new bool[2];
+    public bool contraPared = false;
+    public float timerToNextAttack;
+    public float timeToNextAttack;
+    private float idleSpeed;
 
     void Start()
     {
@@ -50,6 +51,8 @@ public class minotauro : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody>();
         hpActual = hpMax;
         timer_DamageCoolDown = damageCoolDownTime;
+
+        idleSpeed = speed;
 
         AnimationClip[] clips = anim.runtimeAnimatorController.animationClips;
         foreach (AnimationClip clip in clips)
@@ -68,6 +71,7 @@ public class minotauro : MonoBehaviour
         hachaYterremotoAtaques[0] = false;
         hachaYterremotoAtaques[1] = false;
         timeToNextAttack = Random.Range(5f, 10f);
+        determineNextAttack();
     }
 
     void Update()
@@ -78,7 +82,8 @@ public class minotauro : MonoBehaviour
         {
             anim.enabled = true;
             timerAtaque += Time.deltaTime;
-            transform.LookAt(player);
+            Vector3 targetPostition = new Vector3(player.position.x, this.transform.position.y, player.position.z);
+            transform.LookAt(targetPostition);
             timer_DamageCoolDown += Time.deltaTime;
             timerSalto += Time.deltaTime;
             timer += Time.deltaTime;
@@ -93,18 +98,22 @@ public class minotauro : MonoBehaviour
             if (hachaYterremotoAtaques[0] && !playerInRange)
             {
                 transform.position += transform.forward * Time.deltaTime * speed;
+                Debug.Log("towards");
             }
             else if (hachaYterremotoAtaques[0] && playerInRange)
             {
+                Debug.Log("ATTACK");
                 ataqueHacha();
             }
 
-            if(hachaYterremotoAtaques[1] && playerDistance <= 8)
+            if(hachaYterremotoAtaques[1] && playerDistance <= 6)
             {
                 transform.position -= transform.forward * Time.deltaTime * speed;
+                Debug.Log("away");
             }
-            else if(hachaYterremotoAtaques[1] && playerDistance >= 8)
+            else if(hachaYterremotoAtaques[1] && playerDistance > 6)
             {
+                Debug.Log("distance achieved");
                 ataqueTerremoto();
             }
             if(hachaYterremotoAtaques[1] && contraPared)
@@ -112,6 +121,14 @@ public class minotauro : MonoBehaviour
                 ataqueTerremoto();
             }
             
+            if(!hachaYterremotoAtaques[0] && !hachaYterremotoAtaques[1])
+            {
+                if (contraPared)
+                {
+                    idleSpeed = -idleSpeed;
+                }
+                transform.position += transform.right * idleSpeed * Time.deltaTime;
+            }
 
             if (timer > 0.5 && timer < 10)
             {
@@ -153,20 +170,24 @@ public class minotauro : MonoBehaviour
         timeToNextAttack = Random.Range(5f, 10f);
         hachaYterremotoAtaques[0] = false;
         hachaYterremotoAtaques[1] = false;
-        if (hpActual < hpMax / 3)
+
+        if (hpActual > 600)
         {
             //phase 1
             nextAttack = 1;
+            Debug.Log("Phase 1");
         }
-        else if (hpActual < hpMax / 3 * 2)
+        else if (hpActual < 600 && hpActual > 300)
         {
             //phase 2
             nextAttack = Random.Range(0, 2);
+            Debug.Log("Phase 2");
         }
         else
         {
             //phase 3
             nextAttack = 0;
+            Debug.Log("Phase 3");
         }
     }
 
@@ -192,7 +213,6 @@ public class minotauro : MonoBehaviour
             hpActual -= danioJugador;
             timer_DamageCoolDown = 0;
             Vector3 direction = (transform.position - col. transform.position).normalized;
-            Debug.Log(direction);
             rb.AddForce(direction * knockbackForce);
             rb.AddRelativeForce(new Vector3(0, knockbackForceUP, 0));
             for (int i = 0; i < materiales.Length; i++)
