@@ -6,8 +6,8 @@ public class minotauro : MonoBehaviour
 {
     public int nextAttack;
     
-    [SerializeField] private float hpMax;
-    private float hpActual;
+    public float hpMax;
+    public float hpActual;
     [SerializeField] private float danio;
     private float timer_DamageCoolDown;
     [SerializeField] private float damageCoolDownTime;
@@ -35,6 +35,7 @@ public class minotauro : MonoBehaviour
     public float timerToNextAttack;
     public float timeToNextAttack;
     private float idleSpeed;
+    [SerializeField] private float danioTerremoto;
 
     void Start()
     {
@@ -98,22 +99,18 @@ public class minotauro : MonoBehaviour
             if (hachaYterremotoAtaques[0] && !playerInRange)
             {
                 transform.position += transform.forward * Time.deltaTime * speed;
-                Debug.Log("towards");
             }
             else if (hachaYterremotoAtaques[0] && playerInRange)
             {
-                Debug.Log("ATTACK");
                 ataqueHacha();
             }
 
             if(hachaYterremotoAtaques[1] && playerDistance <= 6)
             {
                 transform.position -= transform.forward * Time.deltaTime * speed;
-                Debug.Log("away");
             }
             else if(hachaYterremotoAtaques[1] && playerDistance > 6)
             {
-                Debug.Log("distance achieved");
                 ataqueTerremoto();
             }
             if(hachaYterremotoAtaques[1] && contraPared)
@@ -155,6 +152,14 @@ public class minotauro : MonoBehaviour
             if (timerSalto > saltoTiempo - 0.1 && timerSalto < saltoTiempo + 0.1)
             {
                 player.GetComponentInChildren<CameraScript>().StartTerrmoto(terremotoTiempo);
+                if(timer_DamageCoolDown > 2)
+                {
+                    player.GetComponent<PlayerController>().recibirDanio(danioTerremoto, gameObject);
+                }
+                else
+                {
+                    Debug.Log("SKIPPED");
+                }
                 anim.SetBool("terremoto", false);
             }
         }
@@ -167,7 +172,7 @@ public class minotauro : MonoBehaviour
     private void determineNextAttack()
     {
         timerToNextAttack = 0;
-        timeToNextAttack = Random.Range(5f, 10f);
+        timeToNextAttack = Random.Range(2f, 6f);
         hachaYterremotoAtaques[0] = false;
         hachaYterremotoAtaques[1] = false;
 
@@ -175,19 +180,16 @@ public class minotauro : MonoBehaviour
         {
             //phase 1
             nextAttack = 1;
-            Debug.Log("Phase 1");
         }
         else if (hpActual < 600 && hpActual > 300)
         {
             //phase 2
             nextAttack = Random.Range(0, 2);
-            Debug.Log("Phase 2");
         }
         else
         {
             //phase 3
             nextAttack = 0;
-            Debug.Log("Phase 3");
         }
     }
 

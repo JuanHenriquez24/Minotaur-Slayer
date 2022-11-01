@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\Hilo.cs" />
      <Compile Include="Assets\Scripts\HPController.cs" />
      <Compile Include="Assets\Scripts\KeyInventory.cs" />
+     <Compile Include="Assets\Scripts\MinotaurHP.cs" />
      <Compile Include="Assets\Scripts\minotauro.cs" />
      <Compile Include="Assets\Scripts\Movimiento_Enemigo.cs" />
      <Compile Include="Assets\Scripts\pickUpCollision.cs" />
@@ -68,6 +69,7 @@
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PlayerWeaponScript.cs" />
      <Compile Include="Assets\Scripts\Playing.cs" />
+     <Compile Include="Assets\Scripts\puerta.cs" />
      <Compile Include="Assets\Scripts\randomSpawn.cs" />
      <Compile Include="Assets\Scripts\startEndLoseScreen.cs" />
      <Compile Include="Assets\Scripts\WeapondsInventory.cs" />

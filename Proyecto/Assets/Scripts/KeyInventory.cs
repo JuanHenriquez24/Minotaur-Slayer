@@ -8,7 +8,8 @@ public class KeyInventory : MonoBehaviour
     private bool en_rango_llave;
     private Collider current_col;
     private bool playing;
-
+    public int amountLLaves;
+ 
     void Update()
     {
         playing = gameObject.GetComponentInParent<Playing>().playing;
@@ -17,6 +18,7 @@ public class KeyInventory : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.M) && en_rango_llave)
             {
                 current_col.GetComponent<PickUpLlave>().pickedUp();
+                amountLLaves++;
             }
         }
     }
