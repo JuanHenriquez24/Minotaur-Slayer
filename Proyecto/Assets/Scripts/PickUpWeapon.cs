@@ -5,6 +5,7 @@ using UnityEngine;
 public class PickUpWeapon : MonoBehaviour
 {
     public GameObject arma;
+    public GameObject brillo;
     
 
     public void pickedUp()

@@ -60,15 +60,6 @@ public class AtaqueJugador : MonoBehaviour
 
                 anim.SetBool(animBool, false);
             }
-            if (!attacking)
-            {
-                anim.SetBool(idleBool, true);
-            }
-            else
-            {
-
-                anim.SetBool(idleBool, false);
-            }
         }
     }
 }
