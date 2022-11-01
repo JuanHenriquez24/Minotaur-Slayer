@@ -49,63 +49,82 @@ void loop() {
   if (x1Map > threshold) {
     Keyboard.press('w');
     delay(50);
-    Keyboard.release('w');
+    
     // adelante
   }
   if (x1Map < !threshold) {
     Keyboard.press('s');
     delay(50);
-    Keyboard.release('s');
+   
     // atras
+  }
+  if (x1Map < !threshold && x1Map > threshold) { 
+    Keyboard.release('s');
+    Keyboard.release('w'); 
   }
   if (y1Map > threshold) {
     Keyboard.press('d');
     delay(50);
-    Keyboard.release('d');
     // derecha
   }
   if (y1Map < !threshold) {
     Keyboard.press('a');
     delay(50);
-    Keyboard.release('a');
     // izquierda
+  }
+  if (y1Map < !threshold && y1Map > threshold) { 
+    Keyboard.release('d');
+    Keyboard.release('a'); 
   }
   if (sw1Value == HIGH) {
     Keyboard.press('p');
-    delay(50);
-    Keyboard.release('p');
+    delay(50); 
     // pausar
   }
+  if (sw1Value == LOW) {
+    Keyboard.release('p');
+  }
+  
    if (sw2Value == HIGH) {
     Keyboard.press('e');
-    delay(50);
-    Keyboard.release('e');
-    // correr
+    delay(50); // correr
   }
+  if (sw2Value == LOW) {
+    Keyboard.release('e');
+  }
+  
    if (bot1Value == HIGH) {
     Keyboard.press('m');
-    delay(50);
+    delay(50); // atacar / agarrar objetos
+    }   
+    if (bot1Value == LOW) {
     Keyboard.release('m');
-    // atacar / agarrar objetos
-  }
+    }
+
    if (bot2Value == HIGH) {
     Keyboard.press(32);
-    delay(50);
+    delay(50); // saltar
+   }
+   if (bot2Value == LOW) {
     Keyboard.release(32);
-    // saltar
-  }
+   }
+   
+  
    if (bot3Value == HIGH) {
     Keyboard.press('q');
-    delay(50);
+    delay(50); // tirar hilo
+    }
+    if (bot3Value == LOW) {
     Keyboard.release('q');
-    // tirar hilo
-  }
-   if (bot4Value == HIGH) {
+    }
+    
+    if (bot4Value == HIGH) {
     Keyboard.press('f');
-    delay(50);
+    delay(50);  // 
+    }
+    if (bot4Value == LOW) {
     Keyboard.release('f');
-    // inventario
-  }
+    }
 
   if (x2Map > threshold) {
     Mouse.move(10, 0);
