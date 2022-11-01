@@ -162,6 +162,13 @@ public class minotauro : MonoBehaviour
                 }
                 anim.SetBool("terremoto", false);
             }
+
+            if(hpActual <= 0)
+            {
+                puerta script = FindObjectOfType<puerta>();
+                script.abrir();
+                Destroy(gameObject);
+            }
         }
         else
         {

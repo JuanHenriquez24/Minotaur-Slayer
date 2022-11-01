@@ -10,6 +10,7 @@ public class MinotaurHP : MonoBehaviour
     [SerializeField] Image HPBar;
     public GameObject BarraDeVida;
 
+
     void Update()
     {
         PC = FindObjectOfType<minotauro>();

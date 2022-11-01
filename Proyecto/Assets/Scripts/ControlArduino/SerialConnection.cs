@@ -8,29 +8,31 @@ public class SerialConnection : MonoBehaviour
     
     SerialPort serialPort = new SerialPort("COM6", 115000);
     public string[] valor;
+    private bool shaking;
 
     void Start()
     {
         serialPort.Open();
 
-        serialPort.ReadTimeout = 1;
+        serialPort.WriteTimeout = 200;
+
+        shaking = FindObjectOfType<CameraScript>().shaking;
     }
 
     // Update is called once per frame
     void Update()
     {
+        shaking = FindObjectOfType<CameraScript>().shaking;
+
         if (serialPort.IsOpen)
         {
-            try
+           
+            if (shaking)
             {
-                string lecturaValor = serialPort.ReadLine();
-                valor = lecturaValor.Split(',');
-                Debug.Log(lecturaValor);
+                serialPort.WriteLine("TRUE");
             }
-            catch
-            {
-
-            }
+            
+            
         }
     }
 }

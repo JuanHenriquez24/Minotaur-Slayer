@@ -8,27 +8,44 @@ public class puerta : MonoBehaviour
     private KeyInventory scriptLlaves;
     private int amountLlaves;
     private Animator anim;
+    private bool playing;
+    private Collider boxCollider;
+    private bool battling;
+    [SerializeField] private GameObject minotauro;
 
     void Start()
     {
         scriptLlaves = FindObjectOfType<KeyInventory>();
         anim = GetComponent<Animator>();
+        boxCollider = GetComponent<Collider>();
+        minotauro.SetActive(false);
     }
 
     void Update()
     {
-        amountLlaves = scriptLlaves.amountLLaves;
-        if(enRango && Input.GetKeyDown(KeyCode.M))
+        playing = GetComponentInParent<Playing>().playing;
+        if (playing)
         {
-            if(amountLlaves < 3)
+            anim.SetBool("trying", false);
+            amountLlaves = scriptLlaves.amountLLaves;
+            if (enRango && Input.GetKeyDown(KeyCode.M))
             {
-                anim.SetBool("trying", true);
-            }
-            else
-            {
-
+                if (amountLlaves < 3)
+                {
+                    anim.SetBool("trying", true);
+                }
+                else
+                {
+                    abrir();
+                }
             }
         }
+    }
+
+    public void abrir()
+    {
+        anim.SetBool("open", true);
+        boxCollider.enabled = false;
     }
 
     void OnTriggerEnter(Collider col)
@@ -36,6 +53,12 @@ public class puerta : MonoBehaviour
         if(col.tag == "PLAYER_PICK")
         {
             enRango = true;
+        }
+        if(col.tag == "PLAYER" && minotauro)
+        {
+            anim.SetBool("open", false);
+            boxCollider.enabled = true;
+            minotauro.SetActive(true);
         }
     }
     void OnTriggerExit(Collider col)

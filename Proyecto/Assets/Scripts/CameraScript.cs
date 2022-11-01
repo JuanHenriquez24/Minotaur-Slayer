@@ -14,7 +14,7 @@ public class CameraScript : MonoBehaviour
     [SerializeField] private float terremotoDuracionBasic;
     private float terremotoDuracion;
     [SerializeField] private float shakeAmount;
-    private bool shaking;
+    public bool shaking;
     private int oneOrTwo;
     private float shakeTimer;
     public bool startTerremoto;

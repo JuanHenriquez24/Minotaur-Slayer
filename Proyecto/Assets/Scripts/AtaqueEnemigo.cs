@@ -60,7 +60,10 @@ public class AtaqueEnemigo : MonoBehaviour
 
         if (playing)
         {
-            agent.isStopped = false;
+            if (agent.enabled)
+            {
+                agent.isStopped = false;
+            }
             timer_DamageCoolDown += Time.deltaTime;
             timer_attackCoolDown += Time.deltaTime;
             

@@ -988,7 +988,7 @@ MonoBehaviour:
   hpMax: 50
   danio: 15
   damageCoolDownTime: 0.5
-  attackCoolDown: 1
+  attackCoolDown: 2
   attackTime: 2
   player: {fileID: 0}
   parent: {fileID: 0}
@@ -1001,7 +1001,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: b23bee742ffa37449b9ea492ff46a20a, type: 2}
   - {fileID: 2100000, guid: 6cd18eb8b15ea3d438469fee2637efb2, type: 2}
   ogMaterialColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-  hpPrefab: {fileID: 0}
+  hpPrefab: {fileID: 6519067133051979566, guid: 59ff7f5fc24a3ce45898662ebcfc6a23,
+    type: 3}
 --- !u!195 &2577827707441124231
 NavMeshAgent:
   m_ObjectHideFlags: 0
