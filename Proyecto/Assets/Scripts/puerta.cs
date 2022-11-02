@@ -12,6 +12,7 @@ public class puerta : MonoBehaviour
     private Collider boxCollider;
     private bool battling;
     [SerializeField] private GameObject minotauro;
+    public GameObject spawner;
 
     void Start()
     {
@@ -19,6 +20,7 @@ public class puerta : MonoBehaviour
         anim = GetComponent<Animator>();
         boxCollider = GetComponent<Collider>();
         minotauro.SetActive(false);
+        spawner.SetActive(true);
     }
 
     void Update()
@@ -59,6 +61,7 @@ public class puerta : MonoBehaviour
             anim.SetBool("open", false);
             boxCollider.enabled = true;
             minotauro.SetActive(true);
+            spawner.SetActive(false);
         }
     }
     void OnTriggerExit(Collider col)

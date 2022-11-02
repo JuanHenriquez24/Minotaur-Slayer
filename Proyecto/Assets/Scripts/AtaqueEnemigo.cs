@@ -104,7 +104,7 @@ public class AtaqueEnemigo : MonoBehaviour
                 player.GetComponent<PlayerController>().recibirDanio(danio, gameObject);
             }
         }
-        else
+        else if(agent.isActiveAndEnabled)
         {
             agent.isStopped = true;
         }

@@ -134,10 +134,6 @@ public class minotauro : MonoBehaviour
                     materiales[i].color = ogMaterialColor;
                 }
                 timer = 10;
-                if (hpActual <= 0)
-                {
-                    Destroy(gameObject);
-                }
             }
 
             if (timerAtaque > attackTime)
@@ -156,10 +152,6 @@ public class minotauro : MonoBehaviour
                 {
                     player.GetComponent<PlayerController>().recibirDanio(danioTerremoto, gameObject);
                 }
-                else
-                {
-                    Debug.Log("SKIPPED");
-                }
                 anim.SetBool("terremoto", false);
             }
 
@@ -167,6 +159,7 @@ public class minotauro : MonoBehaviour
             {
                 puerta script = FindObjectOfType<puerta>();
                 script.abrir();
+                script.spawner.SetActive(true);
                 Destroy(gameObject);
             }
         }

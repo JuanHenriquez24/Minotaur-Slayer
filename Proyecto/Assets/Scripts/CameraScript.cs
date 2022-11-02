@@ -17,7 +17,8 @@ public class CameraScript : MonoBehaviour
     public bool shaking;
     private int oneOrTwo;
     private float shakeTimer;
-    public bool startTerremoto;
+    public float timerTerremoto;
+    public float timeToTerremoto;
 
     private void Start()
     {
@@ -30,6 +31,13 @@ public class CameraScript : MonoBehaviour
 
         if (playing)
         {
+            timerTerremoto += Time.deltaTime;
+            if(timerTerremoto >= timeToTerremoto)
+            {
+                StartTerrmoto(terremotoDuracionBasic);
+                timerTerremoto = 0;
+                timeToTerremoto = Random.Range(60f, 300f);
+            }
 
             //rotate on x
             mouse_Y = Input.GetAxis("Mouse Y");
@@ -40,11 +48,6 @@ public class CameraScript : MonoBehaviour
             y_rot = gameObject.GetComponentInParent<PlayerController>().y_rot;
 
             transform.rotation = Quaternion.Euler(x_rot, y_rot, 0);
-
-            if (startTerremoto)
-            {
-                StartTerrmoto(terremotoDuracionBasic);
-            }
         }
     }
     
