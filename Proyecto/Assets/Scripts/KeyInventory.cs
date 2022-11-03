@@ -29,7 +29,7 @@ public class KeyInventory : MonoBehaviour
         {
             en_rango_llave = true;
             current_col = col;
-            
+            col.GetComponent<PickUpLlave>().brillo.SetActive(true);
         }
     }
     private void OnTriggerExit(Collider col)
@@ -37,6 +37,7 @@ public class KeyInventory : MonoBehaviour
         if (col.tag == "LLAVE")
         {
             en_rango_llave = false;
+            col.GetComponent<PickUpLlave>().brillo.SetActive(false);
         }
     }
 

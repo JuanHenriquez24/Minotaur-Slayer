@@ -15,7 +15,6 @@ public class CameraScript : MonoBehaviour
     private float terremotoDuracion;
     [SerializeField] private float shakeAmount;
     public bool shaking;
-    private int oneOrTwo;
     private float shakeTimer;
     public float timerTerremoto;
     public float timeToTerremoto;
@@ -23,7 +22,7 @@ public class CameraScript : MonoBehaviour
     private void Start()
     {
         terremotoDuracion = terremotoDuracionBasic;
-        //timeToTerremoto = Random.Range(60f, 300f);
+        timeToTerremoto = Random.Range(60f, 300f);
     }
 
     void Update()
@@ -32,13 +31,13 @@ public class CameraScript : MonoBehaviour
 
         if (playing)
         {
-            //timerTerremoto += Time.deltaTime;
-            /*if(timerTerremoto >= timeToTerremoto)
+            timerTerremoto += Time.deltaTime;
+            if (timerTerremoto >= timeToTerremoto)
             {
                 StartTerrmoto(terremotoDuracionBasic);
                 timerTerremoto = 0;
                 timeToTerremoto = Random.Range(60f, 300f);
-            }*/
+            }
 
             //rotate on x
             mouse_Y = Input.GetAxis("Mouse Y");
@@ -50,18 +49,19 @@ public class CameraScript : MonoBehaviour
 
             transform.rotation = Quaternion.Euler(x_rot, y_rot, 0);
         }
+
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            StartTerrmoto(5f);
+        }
+
     }
-    
+
     void LateUpdate()
     {
         //camera follow
         cam.transform.rotation = transform.rotation;
-
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            StartTerrmoto(3f);
-        }
-
+        
         if (!shaking)
         {
             cam.transform.position = transform.position;
@@ -73,15 +73,11 @@ public class CameraScript : MonoBehaviour
             {
                 shaking = false;
             }
-            else if (oneOrTwo > 4)
-            {
-                cam.transform.localPosition = transform.position + Random.insideUnitSphere * shakeAmount;
-                oneOrTwo = 0;
-                terremotoDuracion = terremotoDuracionBasic;
-            }
             else
             {
-                oneOrTwo++;
+                Vector2 cirlce = Random.insideUnitCircle * shakeAmount;
+                cam.transform.position = transform.position + new Vector3(cirlce.x, cirlce.y, 0);
+                terremotoDuracion = terremotoDuracionBasic;
             }
 
         }

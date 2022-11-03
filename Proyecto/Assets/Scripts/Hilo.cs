@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Hilo : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private TrailRenderer rndr;
+
     void Start()
     {
-        
+        rndr = GetComponent<TrailRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            rndr.emitting = !rndr.emitting;
+        }
     }
 }
