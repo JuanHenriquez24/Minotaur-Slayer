@@ -23,6 +23,7 @@ public class CameraScript : MonoBehaviour
     private void Start()
     {
         terremotoDuracion = terremotoDuracionBasic;
+        //timeToTerremoto = Random.Range(60f, 300f);
     }
 
     void Update()
@@ -31,13 +32,13 @@ public class CameraScript : MonoBehaviour
 
         if (playing)
         {
-            timerTerremoto += Time.deltaTime;
-            if(timerTerremoto >= timeToTerremoto)
+            //timerTerremoto += Time.deltaTime;
+            /*if(timerTerremoto >= timeToTerremoto)
             {
                 StartTerrmoto(terremotoDuracionBasic);
                 timerTerremoto = 0;
                 timeToTerremoto = Random.Range(60f, 300f);
-            }
+            }*/
 
             //rotate on x
             mouse_Y = Input.GetAxis("Mouse Y");
@@ -55,6 +56,11 @@ public class CameraScript : MonoBehaviour
     {
         //camera follow
         cam.transform.rotation = transform.rotation;
+
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            StartTerrmoto(3f);
+        }
 
         if (!shaking)
         {
