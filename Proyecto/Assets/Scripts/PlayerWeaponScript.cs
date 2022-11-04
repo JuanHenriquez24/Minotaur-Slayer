@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerWeaponScript : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class PlayerWeaponScript : MonoBehaviour
     public string boolName;
     public string idleBool;
     public float timeToAttack;
-    public Color inventoryColor;
+    public Sprite inventoryImage;
     public string changeBool;
     
     void Start()

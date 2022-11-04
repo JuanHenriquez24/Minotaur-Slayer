@@ -57,7 +57,7 @@ public class WeapondsInventory : MonoBehaviour
     private void AgregarArma(GameObject nuevaArma)
     {
         array_armas[availableWeapons] = nuevaArma;
-        UIarrayArmas[availableWeapons].color = nuevaArma.GetComponent<PlayerWeaponScript>().inventoryColor;
+        UIarrayArmas[availableWeapons].sprite = nuevaArma.GetComponent<PlayerWeaponScript>().inventoryImage;
         availableWeapons++;
         script.enRangoArma = false;
     }
@@ -80,7 +80,7 @@ public class WeapondsInventory : MonoBehaviour
 
     private void updateInventory()
     {
-        UIarrayArmas[0].color = array_armas[currentWeaponSlot].GetComponent<PlayerWeaponScript>().inventoryColor;
+        UIarrayArmas[0].sprite = array_armas[currentWeaponSlot].GetComponent<PlayerWeaponScript>().inventoryImage;
         int r = currentWeaponSlot;
         r++;
         for(int i = 1; i < array_armas.Length; i++)
@@ -88,12 +88,12 @@ public class WeapondsInventory : MonoBehaviour
             if(r == array_armas.Length)
             {
                 r = 0;
-                UIarrayArmas[i].color = array_armas[r].GetComponent<PlayerWeaponScript>().inventoryColor;
+                UIarrayArmas[i].sprite = array_armas[r].GetComponent<PlayerWeaponScript>().inventoryImage;
                 r++;
             }
             else if((r > currentWeaponSlot || r < currentWeaponSlot) && array_armas[r])
             {
-                UIarrayArmas[i].color = array_armas[r].GetComponent<PlayerWeaponScript>().inventoryColor;
+                UIarrayArmas[i].sprite = array_armas[r].GetComponent<PlayerWeaponScript>().inventoryImage;
                 r++;
             }
         }
