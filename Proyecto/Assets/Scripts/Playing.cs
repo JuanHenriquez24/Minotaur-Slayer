@@ -8,12 +8,14 @@ public class Playing : MonoBehaviour
     public bool playing;
     public bool pausa;
     [SerializeField] private GameObject screen_pausa;
+    [SerializeField] private GameObject overlay;
 
     void Start()
     {
         Cursor.visible = false;
         playing = true;
         screen_pausa.SetActive(false);
+        overlay.SetActive(true);
     }
 
     void Update()
@@ -34,6 +36,7 @@ public class Playing : MonoBehaviour
         pausa = true;
         screen_pausa.SetActive(true);
         Cursor.visible = true;
+        overlay.SetActive(false);
     }
 
     public void sacarPausa()
@@ -42,5 +45,6 @@ public class Playing : MonoBehaviour
         pausa = false;
         screen_pausa.SetActive(false);
         Cursor.visible = false;
+        overlay.SetActive(true);
     }
 }
