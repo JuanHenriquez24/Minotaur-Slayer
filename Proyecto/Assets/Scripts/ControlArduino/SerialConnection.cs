@@ -29,7 +29,7 @@ public class SerialConnection : MonoBehaviour
            
             if (shaking)
             {
-                serialPort.WriteLine('1');
+                serialPort.WriteLine("1");
             }
             
             
