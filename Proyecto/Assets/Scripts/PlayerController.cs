@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float knockbackForce;
     [SerializeField] private float knockbackForceUP;
     [SerializeField] private GameObject sceneManager;
+    private Vector3 newPosition;
 
     void Start()
     {
@@ -54,22 +55,24 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, y_rot, 0);
 
             //walk
+            newPosition = new Vector3(0, 0, 0);
             if (Input.GetKey(KeyCode.W))
             {
-                transform.position += transform.forward * speed * Time.deltaTime;
+                newPosition += transform.forward * speed * Time.deltaTime;
             }
             if (Input.GetKey(KeyCode.S))
             {
-                transform.position -= transform.forward * speed * Time.deltaTime;
+                newPosition -= transform.forward * speed * Time.deltaTime;
             }
             if (Input.GetKey(KeyCode.D))
             {
-                transform.position += transform.right * speed * Time.deltaTime;
+                newPosition += transform.right * speed * Time.deltaTime;
             }
             if (Input.GetKey(KeyCode.A))
             {
-                transform.position -= transform.right * speed * Time.deltaTime;
+                newPosition -= transform.right * speed * Time.deltaTime;
             }
+            rb.MovePosition(transform.position + newPosition);
 
             //run
             if (is_running)

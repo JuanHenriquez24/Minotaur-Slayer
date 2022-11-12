@@ -16,6 +16,7 @@ TagManager:
   - w
   - hp
   - pared
+  - sapo
   layers:
   - Default
   - TransparentFX

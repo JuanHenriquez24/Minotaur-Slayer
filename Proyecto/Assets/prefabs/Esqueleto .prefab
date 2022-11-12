@@ -992,15 +992,20 @@ MonoBehaviour:
   attackTime: 2
   player: {fileID: 0}
   parent: {fileID: 0}
-  colorDanio: {r: 1, g: 0.3820755, b: 0.3820755, a: 0.44705883}
-  materiales:
-  - {fileID: 2100000, guid: 3aaf798ac1adbfe459c03d9b3a90d67b, type: 2}
+  ogMaterial:
   - {fileID: 2100000, guid: ed4bf5eb597a35c44b4c2f2eed81f4b1, type: 2}
   - {fileID: 2100000, guid: 85100a222154c4a41979254b6ce829ac, type: 2}
   - {fileID: 2100000, guid: 284f20a995eba5645a77126675762550, type: 2}
   - {fileID: 2100000, guid: b23bee742ffa37449b9ea492ff46a20a, type: 2}
   - {fileID: 2100000, guid: 6cd18eb8b15ea3d438469fee2637efb2, type: 2}
-  ogMaterialColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+  - {fileID: 2100000, guid: 3aaf798ac1adbfe459c03d9b3a90d67b, type: 2}
+  danioMaterial:
+  - {fileID: 2100000, guid: da335a69ce210e54db1b5ba1e374440a, type: 2}
+  - {fileID: 2100000, guid: da335a69ce210e54db1b5ba1e374440a, type: 2}
+  - {fileID: 2100000, guid: da335a69ce210e54db1b5ba1e374440a, type: 2}
+  - {fileID: 2100000, guid: da335a69ce210e54db1b5ba1e374440a, type: 2}
+  - {fileID: 2100000, guid: a384f2d4cc0b1114d97dcf4ba89202ab, type: 2}
+  - {fileID: 2100000, guid: 4932da17a7db7ee47b8491be24add523, type: 2}
   hpPrefab: {fileID: 6519067133051979566, guid: 59ff7f5fc24a3ce45898662ebcfc6a23,
     type: 3}
 --- !u!195 &2577827707441124231

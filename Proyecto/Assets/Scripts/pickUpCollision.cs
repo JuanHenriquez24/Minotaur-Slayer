@@ -21,9 +21,12 @@ public class pickUpCollision : MonoBehaviour
             armaEnRango = col.gameObject;
             col.GetComponent<PickUpWeapon>().brillo.SetActive(true);
         }
-        else if(col.tag == "hp" && hp < 100)
+        else if(col.tag == "hp")
         {
-            hp++;
+            if(hp < 100)
+            {
+                hp++;
+            }
             GetComponent<PlayerController>().HPActual = hp;
             Destroy(col);
         }

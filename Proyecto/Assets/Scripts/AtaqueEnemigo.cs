@@ -15,19 +15,20 @@ public class AtaqueEnemigo : MonoBehaviour
     private float timer_attackCoolDown;
     [SerializeField] private float attackCoolDown;
     [SerializeField] private float attackTime;
-    [SerializeField] private Transform player;
-    [SerializeField] private Transform parent;
+    private Transform player;
+    private Transform parent;
     private NavMeshAgent agent;
     private float timer = 20;
-    [SerializeField] private Color colorDanio;
-    [SerializeField] private Material[] materiales;
-    [SerializeField] private Color ogMaterialColor;
+    [SerializeField] private Material[] ogMaterial;
+    private SkinnedMeshRenderer rndr;
+    [SerializeField] private Material[] danioMaterial;
     private Animator anim;
     private bool playerInRange;
     [SerializeField] private GameObject hpPrefab;
 
     void Start()
     {
+        rndr = GetComponentInChildren<SkinnedMeshRenderer>();
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         parent = gameObject.transform.parent;
@@ -70,10 +71,14 @@ public class AtaqueEnemigo : MonoBehaviour
             timer += Time.deltaTime;
             if(timer > 0.5 && timer < 10)
             {
-                for (int i = 0; i < materiales.Length; i++)
+
+                Material[] mArray = rndr.materials;
+                for(int i = 0; i < mArray.Length; i++)
                 {
-                    materiales[i].color = ogMaterialColor;
+                    mArray[i] = ogMaterial[i];
                 }
+                rndr.materials = mArray;
+
                 rb.isKinematic = true;
                 agent.enabled = true;
                 timer = 10;
@@ -91,6 +96,7 @@ public class AtaqueEnemigo : MonoBehaviour
             }
             else if(timer > 10)
             {
+                agent.enabled = true;
                 agent.destination = player.position;
             }
 
@@ -127,10 +133,13 @@ public class AtaqueEnemigo : MonoBehaviour
             agent.enabled = false;
             rb.isKinematic = false;
             rb.AddRelativeForce(new Vector3(0, 100, -100));
-            for (int i = 0; i < materiales.Length; i++)
+            Material[] mArray = rndr.materials;
+            for (int i = 0; i < 6; i++)
             {
-                materiales[i].color = colorDanio;
+                mArray[i] = danioMaterial[i];
             }
+            rndr.materials = mArray;
+
             timer = 0;
         }
     }

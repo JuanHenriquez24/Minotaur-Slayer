@@ -9,13 +9,15 @@ public class Playing : MonoBehaviour
     public bool pausa;
     [SerializeField] private GameObject screen_pausa;
     [SerializeField] private GameObject overlay;
+    [SerializeField] private GameObject intro;
+    private bool inIntro;
 
     void Start()
     {
-        Cursor.visible = false;
-        playing = true;
+        ponerPausa();
         screen_pausa.SetActive(false);
-        overlay.SetActive(true);
+        intro.SetActive(true);
+        inIntro = true;
     }
 
     void Update()
@@ -26,6 +28,12 @@ public class Playing : MonoBehaviour
         }
         else if(Input.GetKeyDown(KeyCode.P) && pausa)
         {
+            sacarPausa();
+        }
+
+        if (inIntro && Input.GetKeyDown(KeyCode.M))
+        {
+            inIntro = false;
             sacarPausa();
         }
     }
@@ -46,5 +54,6 @@ public class Playing : MonoBehaviour
         screen_pausa.SetActive(false);
         Cursor.visible = false;
         overlay.SetActive(true);
+        intro.SetActive(false);
     }
 }

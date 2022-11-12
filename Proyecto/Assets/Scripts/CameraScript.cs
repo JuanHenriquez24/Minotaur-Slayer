@@ -18,6 +18,7 @@ public class CameraScript : MonoBehaviour
     private float shakeTimer;
     public float timerTerremoto;
     public float timeToTerremoto;
+    private float oneOrTwo;
 
     private void Start()
     {
@@ -52,7 +53,7 @@ public class CameraScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.H))
         {
-            StartTerrmoto(5f);
+            StartTerrmoto(10f);
         }
 
     }
@@ -73,11 +74,21 @@ public class CameraScript : MonoBehaviour
             {
                 shaking = false;
             }
-            else
+            else if(oneOrTwo >= 3)
             {
                 Vector2 cirlce = Random.insideUnitCircle * shakeAmount;
                 cam.transform.position = transform.position + new Vector3(cirlce.x, cirlce.y, 0);
                 terremotoDuracion = terremotoDuracionBasic;
+                oneOrTwo = 0;
+            }
+            else if(oneOrTwo > 0)
+            {
+                cam.transform.position = transform.position;
+                oneOrTwo++;
+            }
+            else
+            {
+                oneOrTwo++;
             }
 
         }
