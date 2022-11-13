@@ -3,20 +3,20 @@
 
 #define joyX1 A0
 #define joyY1 A1
-#define joySW1 2
+#define joySW1 2   
 #define joyX2 A2
 #define joyY2 A3
 #define joySW2 3
 #define bot1 4
-#define bot2 5
+#define bot2 5   
 #define bot3 6
 #define bot4 7
-#define vib 8
+#define vib 12
 
-int range = 12;             // output range of X or Y movement
-int responseDelay = 5;      // response delay of the mouse, in ms
-int threshold = range / 4;  // resting 0
-int center = range / 2;     // resting position value
+int range = 12;             
+int responseDelay = 5;      
+int threshold = range / 4; 
+int center = range / 2;     
 bool mouseIsMoving = true;
 
 void setup() {
@@ -31,6 +31,7 @@ void setup() {
   pinMode(bot3, INPUT_PULLUP);
   pinMode(bot4, INPUT_PULLUP);
   pinMode(vib, OUTPUT);
+  pinMode(LED_BUILTIN, OUTPUT);
 }
 
 void loop() {
@@ -41,36 +42,34 @@ void loop() {
   int bot2Value = !digitalRead(bot2);
   int bot3Value = !digitalRead(bot3);
   int bot4Value = !digitalRead(bot4);
-  int vibra = Serial.read();
-  
-  digitalWrite(vib, LOW);
+
 
   int x1Map = readAxis(joyX1);
   int y1Map = readAxis(joyY1);
   int x2Map = readAxis(joyX2);
   int y2Map = readAxis(joyY2);
 
-
-  // use the pushbuttons to control the keyboard:
+  
   if (x1Map < 0) {
-    Keyboard.write('a');   // izquierda
+    Keyboard.write('d');   // izquierda
   }
   
   if (x1Map > 0) {
-    Keyboard.write('d'); // derecha
+    Keyboard.write('a'); // derecha
   }
 
   if (y1Map > 0) {
-    Keyboard.write('s'); // abajo
+    Keyboard.write('w'); // abajo
   }
 
   if (y1Map < 0) {
-    Keyboard.write('w'); // arriba
+    Keyboard.write('s'); // arriba
   }
 
 
   if (sw1Value == HIGH) {
-    Keyboard.write('p');    // pausar
+    Keyboard.press('p');    // pausar
+    Keyboard.release('p');
   }
 
   if (sw2Value == HIGH) {
@@ -79,7 +78,7 @@ void loop() {
 
    
   if (bot1Value == HIGH) {
-    Keyboard.write('m');  // atacar / agarrar objetos
+    Keyboard.write('m');  // atacar
   }
 
 
@@ -102,13 +101,18 @@ void loop() {
     Mouse.move(x2Map, y2Map, 0);
   }
 
-  if(vibra == 1){
-    digitalWrite(vib, HIGH);
-    digitalWrite(LED_BUILTIN, HIGH);
-  }
-  else{
-    digitalWrite(vib, LOW);
-    digitalWrite(LED_BUILTIN, LOW);
+  if(Serial.available() > 0)
+  {
+    char ltr = Serial.read();
+    if(ltr == 'r')
+    {
+      digitalWrite(vib, HIGH);
+      digitalWrite(LED_BUILTIN, HIGH);
+    }
+    else if(ltr = 'g')  {
+      digitalWrite(vib, LOW);
+      digitalWrite(LED_BUILTIN, LOW);
+    }
   }
 
   delay(responseDelay);
@@ -120,12 +124,12 @@ int readAxis(int thisAxis) {
 
   reading = map(reading, 0, 1023, 0, range);
 
+
   int distance = reading - center;
 
   if (abs(distance) < threshold) {
     distance = 0;
   }
 
-  // return the distance for this axis:
   return distance;
 }
