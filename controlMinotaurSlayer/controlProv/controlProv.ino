@@ -13,10 +13,10 @@
 #define bot4 7
 #define vib 12
 
-int range = 12;             
-int responseDelay = 5;      
-int threshold = range / 4; 
-int center = range / 2;     
+int range = 12;             // output range of X or Y movement
+int responseDelay = 5;      // response delay of the mouse, in ms
+int threshold = range / 4;  // resting 0
+int center = range / 2;     // resting position value
 bool mouseIsMoving = true;
 
 void setup() {
@@ -44,12 +44,14 @@ void loop() {
   int bot4Value = !digitalRead(bot4);
 
 
+
+
   int x1Map = readAxis(joyX1);
   int y1Map = readAxis(joyY1);
   int x2Map = readAxis(joyX2);
   int y2Map = readAxis(joyY2);
 
-  
+  // use the pushbuttons to control the keyboard:
   if (x1Map < 0) {
     Keyboard.write('d');   // izquierda
   }
@@ -96,23 +98,16 @@ void loop() {
     Keyboard.write('f');
   }
 
-
   if(mouseIsMoving){
     Mouse.move(x2Map, y2Map, 0);
   }
 
-  if(Serial.available() > 0)
-  {
-    char ltr = Serial.read();
-    if(ltr == 'r')
-    {
-      digitalWrite(vib, HIGH);
-      digitalWrite(LED_BUILTIN, HIGH);
-    }
-    else if(ltr = 'g')  {
-      digitalWrite(vib, LOW);
-      digitalWrite(LED_BUILTIN, LOW);
-    }
+  if (Serial.available() > 0) {
+    digitalWrite(vib, HIGH);
+  } 
+
+  if((Serial.available() < 0)){
+    digitalWrite(vib, LOW);
   }
 
   delay(responseDelay);
@@ -122,14 +117,16 @@ int readAxis(int thisAxis) {
   
   int reading = analogRead(thisAxis);
 
+  // map the reading from the analog input range to the output range:
   reading = map(reading, 0, 1023, 0, range);
 
-
+  // if the output reading is outside from the rest position threshold, use it:
   int distance = reading - center;
 
   if (abs(distance) < threshold) {
     distance = 0;
   }
 
+  // return the distance for this axis:
   return distance;
 }
