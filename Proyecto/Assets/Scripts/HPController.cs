@@ -8,7 +8,6 @@ public class HPController : MonoBehaviour
 
     public PlayerController PC;
     [SerializeField] Image HPBar;
-    public GameObject BarraDeVida;
     
     void Update()
     {

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -861,7 +861,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PC: {fileID: 0}
   HPBar: {fileID: 116954936}
-  BarraDeVida: {fileID: 0}
 --- !u!114 &116954936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -880,8 +879,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 3
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
@@ -3188,7 +3187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7fe2978e769f44aaf99ca33d131b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  object_UI: {fileID: 0}
+  object_UI: {fileID: 540311402}
   color:
     serializedVersion: 2
     rgba: 4291611852
@@ -39953,7 +39952,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 643924178}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -77.5, y: 1.6, z: -32.7}
+  m_LocalPosition: {x: -121.9, y: 1.6, z: -31.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 367492488}
@@ -41159,7 +41158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7fe2978e769f44aaf99ca33d131b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  object_UI: {fileID: 0}
+  object_UI: {fileID: 1226823394}
   color:
     serializedVersion: 2
     rgba: 4291611852
@@ -44477,7 +44476,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.1
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -45517,7 +45516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 297acb85481351743a4bb0bf6875bac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amountLLaves: 3
+  amountLLaves: 0
 --- !u!65 &1696797451
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -49246,7 +49245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextAttack: 0
-  hpMax: 3
+  hpMax: 500
   hpActual: 0
   danio: 20
   damageCoolDownTime: 1

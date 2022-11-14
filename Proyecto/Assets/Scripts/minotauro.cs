@@ -176,12 +176,12 @@ public class minotauro : MonoBehaviour
         hachaYterremotoAtaques[0] = false;
         hachaYterremotoAtaques[1] = false;
 
-        if (hpActual > 600)
+        if (hpActual > (hpMax / 3) * 2)
         {
             //phase 1
             nextAttack = 1;
         }
-        else if (hpActual < 600 && hpActual > 300)
+        else if (hpActual < (hpMax / 3) * 2 && hpActual > hpMax / 3)
         {
             //phase 2
             nextAttack = Random.Range(0, 2);
