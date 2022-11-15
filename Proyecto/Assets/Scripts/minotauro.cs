@@ -165,9 +165,7 @@ public class minotauro : MonoBehaviour
             if(hpActual <= 0)
             {
                 puerta script = FindObjectOfType<puerta>();
-                script.abrir();
-                script.spawner.SetActive(true);
-                barraDeVida.SetActive(false);
+                script.lost = true;
                 Destroy(gameObject);
             }
         }

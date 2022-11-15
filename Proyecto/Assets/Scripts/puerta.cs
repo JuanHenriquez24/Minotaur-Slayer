@@ -14,6 +14,8 @@ public class puerta : MonoBehaviour
     [SerializeField] private GameObject minotauro;
     public GameObject spawner;
     [SerializeField] private GameObject player;
+    [SerializeField] private startEndLoseScreen sceneManager;
+    public bool lost;
 
     void Start()
     {
@@ -49,6 +51,11 @@ public class puerta : MonoBehaviour
                 player.transform.position = new Vector3(-116.8f, 3f, 34.29f);
                 player.GetComponentInChildren<KeyInventory>().amountLLaves = 3;
                 player.GetComponent<PlayerController>().HPActual = player.GetComponent<PlayerController>().HPmax;
+            }
+
+            if (lost)
+            {
+                sceneManager.winGame();
             }
         }
     }

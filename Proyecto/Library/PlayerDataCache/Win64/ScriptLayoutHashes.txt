@@ -1,6 +1,6 @@
 Win64
 PlayerPath?
-C:/Users/guill/OneDrive/Desktop/Minotaur-Slayer/builds/Proyecto.exe
+C:/Users/46483443/Desktop/Minotaur-Slayer/build/Proyecto.exe
 SceneListBegin?
 Assets/Scenes/Lose.unity
 Assets/Scenes/SampleScene.unity
@@ -22,8 +22,9 @@ e1bbf0ab858085e38fae6b12ebbdcd35 UnityEngine.Timeline.dll:UnityEngine.Timeline.G
 e1bbf0ab858085e38fae6b12ebbdcd35 UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 201e3fde670b00545944bb3db215c80a UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
 e7a73f5f78ba6445195ec23b74a1ce2d Unity.TextMeshPro.dll:TMPro.TMP_ScrollbarEventHandler
-1ecaf14a7b4ff3b61670efbcd028ca0a Assembly-CSharp.dll:.AtaqueEnemigo
-66943efe5563391c44b9032de41a5800 Assembly-CSharp.dll:.Playing
+bdf66f88522f37713df3a1571d7dc5f5 Assembly-CSharp.dll:.AtaqueEnemigo
+c4cf9ea041e006095ba061efddcccffd Assembly-CSharp.dll:.PickUpWeapon
+9b7b789f95f3739920c09fd8bbae7bb4 Assembly-CSharp.dll:.Playing
 cf9f5cf2c3145a37ac07f00e50e460f9 UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
 507174d46dacbc5fe45e28485db5dd1e UnityEngine.UI.dll:UnityEngine.UI.Button
@@ -101,7 +102,7 @@ e1bbf0ab858085e38fae6b12ebbdcd35 UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 e1bbf0ab858085e38fae6b12ebbdcd35 UnityEngine.Timeline.dll:UnityEngine.Timeline.GroupTrack
 e1bbf0ab858085e38fae6b12ebbdcd35 UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 201e3fde670b00545944bb3db215c80a UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
-ee0002dc14efc9a290983081103dbe2f Assembly-CSharp.dll:.CameraScript
+7ba85fab3870fd66f368af3191c32a2b Assembly-CSharp.dll:.CameraScript
 4e9333594897a1fb8b136ad2eae996c7 Unity.TextMeshPro.dll:TMPro.TMP_SubMeshUI
 e6ae40841db498b6e673877ac45ad208 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
@@ -118,16 +119,20 @@ ad9173d3a69d99153f38ed4b62226129 UnityEngine.Networking.dll:UnityEngine.Networki
 9b895dcabbc1faf095c000c32d471fd0 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 5887ef1bc706b22b773d253fd443ceef UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.Hilo
+1dd04504887e0dc0e2c0eeeacff4015e Assembly-CSharp.dll:.MinotaurHP
 afc5b93a7b192de2dcb3832fe35a5c7e Assembly-CSharp.dll:.Movimiento_Enemigo
 b8a5e8091ab0b8861d2add371082c5e0 Unity.TextMeshPro.dll:TMPro.TMP_SpriteAsset
-71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.KeyInventory
-0207f5c1b91e7bf78d3d5a50e6cea557 Assembly-CSharp.dll:.PlayerWeaponScript
+e84b405e2270b3bae38ee5d416cb431f Assembly-CSharp.dll:.KeyInventory
+6d23771de7d9c579334ccac8169827d8 Assembly-CSharp.dll:.PlayerWeaponScript
 b3ab2106268377ffe25dd18ac23dca28 Unity.TextMeshPro.dll:TMPro.TMP_Asset
-7c29c5687a578b5b0a13501e871a12bb Assembly-CSharp.dll:.PickUpLlave
+4dfb36d6c57a8a6ad2447a433c13e5ca Assembly-CSharp.dll:.pickUpCollision
+f596db2185f515e9ee7dc95233321579 Assembly-CSharp.dll:.PickUpLlave
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.TextMeshPro.dll:TMPro.TMP_SpriteAnimator
-74faf5528f541c3836d91d69d5f5fbf9 Assembly-CSharp.dll:.PlayerController
-9a8289b18f7cea4cc34d7f094e23e8c9 Assembly-CSharp.dll:.WeapondsInventory
+73c2dfb65cdd82eb25fbda679826ae0c Assembly-CSharp.dll:.PlayerController
+805ed9279e33305b9c53b7b15ab44022 Assembly-CSharp.dll:.WeapondsInventory
 4fd8bf02e3089425d3502e26c44ba31a Unity.TextMeshPro.dll:TMPro.TextContainer
+897dd686661b3f4fb11878ae3f923f01 Assembly-CSharp.dll:.randomSpawn
 e6ae40841db498b6e673877ac45ad208 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 1dcb82730d983b77cec736c6ef19f814 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery
@@ -142,10 +147,12 @@ e0ee4b3d4e27318934cc940a969d3d96 UnityEngine.Networking.dll:UnityEngine.Networki
 ad9173d3a69d99153f38ed4b62226129 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransform
 9b895dcabbc1faf095c000c32d471fd0 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 5887ef1bc706b22b773d253fd443ceef UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
-b8e977e6d942399c3eccbf066e03c572 Assembly-CSharp.dll:.HPController
+caebc4298e389a36a79f6d8453ef86a6 Assembly-CSharp.dll:.HPController
 6ae0dc0cd33f6640a77ad8f1b87447ed Assembly-CSharp.dll:.SerialConnection
+a49f51a116fefba1c10ac9cf794f6577 Assembly-CSharp.dll:.sapo
 a9f049c3dc82bb36fdb142e4d6a2658d Unity.TextMeshPro.dll:TMPro.TMP_FontAsset
 e1300922cc039f41ab46a47f4cb05898 Unity.TextMeshPro.dll:TMPro.TMP_Settings
+8791756602497bdbcc653f91e3d1c858 Assembly-CSharp.dll:.puerta
 88cc9df3c6fc697bfbeacd24c0d6f2d7 UnityEngine.TestRunner.dll:UnityEngine.TestTools.BeforeAfterTestCommandState
 88cc9df3c6fc697bfbeacd24c0d6f2d7 UnityEngine.TestRunner.dll:UnityEngine.TestTools.EnumerableSetUpTearDownCommandState
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.PlayModeRunnerCallback
@@ -164,9 +171,9 @@ fb6a1ea36b4f6ef5948d283d93760765 UnityEngine.GoogleAudioSpatializer.dll:UnityEng
 507174d46dacbc5fe45e28485db5dd1e Unity.Analytics.DataPrivacy.dll:UnityEngine.Analytics.DataPrivacyButton
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 d791aa6007fa3640be1164ea75bb087d Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.startEndLoseScreen
 df434544c9f7b33d1cc7e635b180d279 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 3165968ba45c74472d279ba04455fccb Unity.TextMeshPro.dll:TMPro.TMP_ColorGradient
 93396ffdfd671514bc3555b04ca0b139 Assembly-CSharp.dll:.AtaqueJugador
 8649814970b42d345b89944b862453cc Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
-71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.minotauro
-71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.startEndLoseScreen
+4f273563a55defd36e6fdd6494d17d6a Assembly-CSharp.dll:.minotauro
