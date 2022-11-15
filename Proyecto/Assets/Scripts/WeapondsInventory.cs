@@ -41,7 +41,7 @@ public class WeapondsInventory : MonoBehaviour
         {
             enRangoArma = script.enRangoArma;
             armaEnRango = script.armaEnRango;
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.F) && availableWeapons > 1)
             {
                 StartCoroutine(cambiarArma());
             }
@@ -60,6 +60,7 @@ public class WeapondsInventory : MonoBehaviour
         UIarrayArmas[availableWeapons].sprite = nuevaArma.GetComponent<PlayerWeaponScript>().inventoryImage;
         availableWeapons++;
         script.enRangoArma = false;
+        updateInventory();
     }
 
     IEnumerator cambiarArma()
@@ -69,7 +70,7 @@ public class WeapondsInventory : MonoBehaviour
         anim.SetBool(array_armas[currentWeaponSlot].GetComponent<PlayerWeaponScript>().changeBool, false);
         array_armas[currentWeaponSlot].SetActive(false);
         currentWeaponSlot++;
-        if (currentWeaponSlot >= array_armas.Length)
+        if (currentWeaponSlot >= availableWeapons)
         {
             currentWeaponSlot = 0;
         }
@@ -81,21 +82,22 @@ public class WeapondsInventory : MonoBehaviour
     private void updateInventory()
     {
         UIarrayArmas[0].sprite = array_armas[currentWeaponSlot].GetComponent<PlayerWeaponScript>().inventoryImage;
-        int r = currentWeaponSlot;
-        r++;
-        for(int i = 1; i < array_armas.Length; i++)
+        if(availableWeapons > 1)
         {
-            if(r == array_armas.Length)
+            if(currentWeaponSlot == availableWeapons - 1)
             {
-                r = 0;
-                UIarrayArmas[i].sprite = array_armas[r].GetComponent<PlayerWeaponScript>().inventoryImage;
-                r++;
+                UIarrayArmas[1].enabled = true;
+                UIarrayArmas[1].sprite = array_armas[0].GetComponent<PlayerWeaponScript>().inventoryImage;
             }
-            else if((r > currentWeaponSlot || r < currentWeaponSlot) && array_armas[r])
+            else
             {
-                UIarrayArmas[i].sprite = array_armas[r].GetComponent<PlayerWeaponScript>().inventoryImage;
-                r++;
+                UIarrayArmas[1].enabled = true;
+                UIarrayArmas[1].sprite = array_armas[currentWeaponSlot + 1].GetComponent<PlayerWeaponScript>().inventoryImage;
             }
+        }
+        else
+        {
+            UIarrayArmas[1].enabled = false;
         }
     }
 }

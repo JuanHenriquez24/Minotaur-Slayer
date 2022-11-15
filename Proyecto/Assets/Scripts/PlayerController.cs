@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
         speed = walk_speed;
         HPActual = HPmax;
         damage_cool_down = damageCoolDownTime;
+        transform.position = new Vector3(-77.7f, 3f, -26.21f);
     }
 
     void Update()

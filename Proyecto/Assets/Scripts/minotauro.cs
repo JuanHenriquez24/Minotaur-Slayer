@@ -36,9 +36,11 @@ public class minotauro : MonoBehaviour
     public float timeToNextAttack;
     private float idleSpeed;
     [SerializeField] private float danioTerremoto;
-
+    [SerializeField] private GameObject barraDeVida;
+    
     void Start()
     {
+        barraDeVida.SetActive(true);
         anim = GetComponentInChildren<Animator>();
         parent = gameObject.transform.parent;
         for (int i = 0; i < parent.childCount; i++)
@@ -73,6 +75,11 @@ public class minotauro : MonoBehaviour
         hachaYterremotoAtaques[1] = false;
         timeToNextAttack = Random.Range(5f, 10f);
         determineNextAttack();
+        for (int i = 0; i < materiales.Length; i++)
+        {
+            materiales[i].color = ogMaterialColor;
+        }
+
     }
 
     void Update()
@@ -160,6 +167,7 @@ public class minotauro : MonoBehaviour
                 puerta script = FindObjectOfType<puerta>();
                 script.abrir();
                 script.spawner.SetActive(true);
+                barraDeVida.SetActive(false);
                 Destroy(gameObject);
             }
         }

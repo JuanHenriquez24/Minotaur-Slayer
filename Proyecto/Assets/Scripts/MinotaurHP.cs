@@ -8,7 +8,6 @@ public class MinotaurHP : MonoBehaviour
 
     public minotauro PC;
     [SerializeField] Image HPBar;
-    public GameObject BarraDeVida;
 
 
     void Update()

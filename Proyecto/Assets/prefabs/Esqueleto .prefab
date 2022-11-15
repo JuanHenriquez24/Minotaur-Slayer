@@ -934,8 +934,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.365659, y: 4.4803085, z: 2.1288433}
-  m_Center: {x: 0.18594106, y: 4.153488, z: 2.254485}
+  m_Size: {x: 1.3953115, y: 4.8339324, z: 1.8124652}
+  m_Center: {x: 0.03920396, y: 3.9766765, z: 2.0962956}
 --- !u!23 &2577827707441124233
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -990,8 +990,6 @@ MonoBehaviour:
   damageCoolDownTime: 0.5
   attackCoolDown: 2
   attackTime: 2
-  player: {fileID: 0}
-  parent: {fileID: 0}
   ogMaterial:
   - {fileID: 2100000, guid: ed4bf5eb597a35c44b4c2f2eed81f4b1, type: 2}
   - {fileID: 2100000, guid: 85100a222154c4a41979254b6ce829ac, type: 2}

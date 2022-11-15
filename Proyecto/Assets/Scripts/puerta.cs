@@ -13,6 +13,7 @@ public class puerta : MonoBehaviour
     private bool battling;
     [SerializeField] private GameObject minotauro;
     public GameObject spawner;
+    [SerializeField] private GameObject player;
 
     void Start()
     {
@@ -40,6 +41,14 @@ public class puerta : MonoBehaviour
                 {
                     abrir();
                 }
+            }
+
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                spawner.SetActive(false);
+                player.transform.position = new Vector3(-116.8f, 3f, 34.29f);
+                player.GetComponentInChildren<KeyInventory>().amountLLaves = 3;
+                player.GetComponent<PlayerController>().HPActual = player.GetComponent<PlayerController>().HPmax;
             }
         }
     }
